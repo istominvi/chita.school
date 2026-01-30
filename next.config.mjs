@@ -1,11 +1,14 @@
 /** @type {import('next').NextConfig} */
+const basePath = process.env.BASE_PATH || '';
+
 const nextConfig = {
   output: 'export',
   typescript: {
     ignoreBuildErrors: true,
   },
   images: {
-    unoptimized: true,
+    loader: 'custom',
+    loaderFile: './image-loader.ts',
   },
   // Для GitHub Pages - укажите имя вашего репозитория
   // basePath: '/your-repo-name',

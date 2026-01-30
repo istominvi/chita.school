@@ -10,6 +10,7 @@ const nextConfig = {
   // Для GitHub Pages - укажите имя вашего репозитория
   // basePath: '/your-repo-name',
   // assetPrefix: '/your-repo-name',
+  basePath: process.env.BASE_PATH || '',
   trailingSlash: true,
 }
 

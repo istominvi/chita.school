@@ -1,4 +1,12 @@
 import Image from "next/image"
+import photo18 from "@/public/images/photo-18.jpg"
+import iconHelenDoron from "@/public/images/icon-helen-doron.png"
+import iconFgos from "@/public/images/icon-fgos.png"
+import iconInjinirium from "@/public/images/icon-injinirium.png"
+import iconOlympiad from "@/public/images/icon-olympiad.png"
+import iconCandle from "@/public/images/icon-candle.png"
+import iconAsia from "@/public/images/icon-asia.png"
+import placeholderSvg from "@/public/placeholder.svg"
 import { CheckCircle } from "lucide-react"
 
 const highlights = [
@@ -10,37 +18,37 @@ const highlights = [
 
 const foundations = [
   {
-    icon: "/images/icon-helen-doron.png",
+    icon: iconHelenDoron,
     title: "Helen Doron English",
     description:
       "Школа основана на базе сети школ английского языка Helen Doron. Филиал в Чите работает уже 10 лет. Методика преподавания предполагает углубленное изучение английского языка как второго родного. Дети сдают к 4 классу международные экзамены на уровень B1.",
   },
   {
-    icon: "/images/icon-fgos.png",
+    icon: iconFgos,
     title: "Программа ФГОС",
     description:
       "Занятия полностью соответствуют программе ФГОС и включают углубленное изучение предметов, защиту исследовательских проектов, опыты и эксперименты. 2 раза в год ученики Евразийской начальной школы проходят государственную аттестацию.",
   },
   {
-    icon: "/images/icon-injinirium.png",
+    icon: iconInjinirium,
     title: "Инжинириум МГТУ им. Баумана",
     description:
       "Школа основана на базе центра молодежного инновационного творчества «Инжинириум МГТУ им.Баумана» и предлагает посещение курсов: робототехника, биотехнологии, программирование, инженерное дело, искусственный интеллект.",
   },
   {
-    icon: "/images/icon-olympiad.png",
+    icon: iconOlympiad,
     title: "Индивидуальная траектория",
     description:
       "За счет вариативной части дополнительных занятий составляем индивидуальную траекторию каждому ребенку. Выстраиваем олимпиадное движение вокруг конкретного ученика — в соответствии с его сильными сторонами, планами и желаниями. Успех учащегося — наш приоритет, мы ориентируемся на академические успехи и на развитие природных талантов учеников.",
   },
   {
-    icon: "/images/icon-candle.png",
+    icon: iconCandle,
     title: "Дружелюбная атмосфера",
     description:
       "Работаем над созданием дружного коллектива и дружелюбной атмосферы. Раз в неделю у учеников занятия по эмоциональному интеллекту с психологом, развитию критического мышления. Ежедневно в классах проводятся вечерние свечки для рефлексии о пройденном дне. В конце учебной недели ребята собираются на «детсовет», чтобы обсудить планы и накопившиеся вопросы.",
   },
   {
-    icon: "/images/icon-asia.png",
+    icon: iconAsia,
     title: "Китайский язык",
     description:
       "Евразийская начальная школа находится территориально между Азией и Европой. Владение китайским языком открывает карьерные возможности в бизнесе и международных отношениях. Поэтому китайский язык является обязательным предметом со 2 класса. Кроме того, изучение китайского языка развивает когнитивные навыки и расширяет кругозор.",
@@ -85,7 +93,7 @@ export function About() {
           <div className="relative">
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
               <Image
-                src="/images/photo-18.jpg"
+                src={photo18}
                 alt="Современный класс Helen Doron English"
                 fill
                 className="object-cover"
@@ -103,7 +111,7 @@ export function About() {
             >
               <div className="h-16 mb-6 flex items-center">
                 <Image
-                  src={foundation.icon || "/placeholder.svg"}
+                  src={foundation.icon || placeholderSvg}
                   alt={foundation.title}
                   width={160}
                   height={64}

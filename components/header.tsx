@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import logoImg from "@/public/images/logo.png"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -23,7 +24,7 @@ export function Header() {
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-3">
             <Image
-              src="/images/logo.png"
+              src={logoImg}
               alt="Логотип Евразийской Школы"
               width={48}
               height={48}
@@ -76,7 +77,7 @@ export function Header() {
             <div className="flex items-center justify-between">
               <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-3">
                 <Image
-                  src="/images/logo.png"
+                  src={logoImg}
                   alt="Логотип Евразийской Школы"
                   width={48}
                   height={48}

@@ -1,5 +1,9 @@
 import Link from "next/link"
 import Image from "next/image"
+import logoImg from "@/public/images/logo.png"
+import photo3 from "@/public/images/photo-3.jpg"
+import photo18 from "@/public/images/photo-18.jpg"
+import photo28 from "@/public/images/photo-28.jpg"
 import { Button } from "@/components/ui/button"
 import { BookOpen, Users, Clock, Award } from "lucide-react"
 
@@ -43,7 +47,7 @@ export function Hero() {
             
             <div className="flex items-center gap-4 mb-2">
               <Image
-                src="/images/logo.png"
+                src={logoImg}
                 alt="Логотип школы"
                 width={80}
                 height={80}
@@ -74,7 +78,7 @@ export function Hero() {
               <div className="space-y-4">
                 <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
                   <Image
-                    src="/images/photo-3.jpg"
+                    src={photo3}
                     alt="Современный класс робототехники"
                     fill
                     className="object-cover"
@@ -83,7 +87,7 @@ export function Hero() {
                 </div>
                 <div className="relative aspect-square rounded-2xl overflow-hidden shadow-lg">
                   <Image
-                    src="/images/photo-18.jpg"
+                    src={photo18}
                     alt="Класс английского языка Helen Doron"
                     fill
                     className="object-cover"
@@ -93,7 +97,7 @@ export function Hero() {
               <div className="pt-8">
                 <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-lg">
                   <Image
-                    src="/images/photo-28.jpg"
+                    src={photo28}
                     alt="Светлый современный класс"
                     fill
                     className="object-cover"

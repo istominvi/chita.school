@@ -1,5 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
+import logoImg from "@/public/images/logo.png"
 
 const navigation = {
   main: [
@@ -19,7 +20,7 @@ export function Footer() {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
           <div className="flex items-center gap-3">
             <Image
-              src="/images/logo.png"
+              src={logoImg}
               alt="Логотип Евразийской Школы"
               width={48}
               height={48}

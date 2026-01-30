@@ -1,4 +1,5 @@
 import Image from "next/image"
+import directorImg from "@/public/images/director.jpg"
 
 export function Director() {
   return (
@@ -8,7 +9,7 @@ export function Director() {
           <div className="bg-background rounded-3xl p-8 lg:p-12 border border-border">
             <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-start">
               <Image
-                src="/images/director.jpg"
+                src={directorImg}
                 alt="Евгения Истомина — директор школы"
                 width={160}
                 height={160}

@@ -15,3 +15,7 @@
 # Misc
 .DS_Store
 *.log
+
+# next-image-export-optimizer
+nextImageExportOptimizer
+**/nextImageExportOptimizer

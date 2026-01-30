@@ -1,5 +1,5 @@
 import Link from "next/link"
-import Image from "next/image"
+import ExportedImage from "next-image-export-optimizer"
 import { Button } from "@/components/ui/button"
 import { BookOpen, Users, Clock, Award } from "lucide-react"
 
@@ -42,7 +42,7 @@ export function Hero() {
             </div>
             
             <div className="flex items-center gap-4 mb-2">
-              <Image
+              <ExportedImage
                 src="/images/logo.png"
                 alt="Логотип школы"
                 width={80}
@@ -73,7 +73,7 @@ export function Hero() {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
                 <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
-                  <Image
+                  <ExportedImage
                     src="/images/photo-3.jpg"
                     alt="Современный класс робототехники"
                     fill
@@ -82,7 +82,7 @@ export function Hero() {
                   />
                 </div>
                 <div className="relative aspect-square rounded-2xl overflow-hidden shadow-lg">
-                  <Image
+                  <ExportedImage
                     src="/images/photo-18.jpg"
                     alt="Класс английского языка Helen Doron"
                     fill
@@ -92,7 +92,7 @@ export function Hero() {
               </div>
               <div className="pt-8">
                 <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-lg">
-                  <Image
+                  <ExportedImage
                     src="/images/photo-28.jpg"
                     alt="Светлый современный класс"
                     fill

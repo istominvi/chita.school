@@ -1,4 +1,4 @@
-import Image from "next/image"
+import ExportedImage from "next-image-export-optimizer"
 
 export function Director() {
   return (
@@ -7,7 +7,7 @@ export function Director() {
         <div className="mx-auto max-w-4xl">
           <div className="bg-background rounded-3xl p-8 lg:p-12 border border-border">
             <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-start">
-              <Image
+              <ExportedImage
                 src="/images/director.jpg"
                 alt="Евгения Истомина — директор школы"
                 width={160}

@@ -1,4 +1,4 @@
-import Image from "next/image"
+import ExportedImage from "next-image-export-optimizer"
 import { CheckCircle } from "lucide-react"
 
 const highlights = [
@@ -84,7 +84,7 @@ export function About() {
 
           <div className="relative">
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-              <Image
+              <ExportedImage
                 src="/images/photo-18.jpg"
                 alt="Современный класс Helen Doron English"
                 fill
@@ -102,7 +102,7 @@ export function About() {
               className="bg-background rounded-2xl p-8 border border-border hover:shadow-lg hover:border-primary/30 transition-all duration-300"
             >
               <div className="h-16 mb-6 flex items-center">
-                <Image
+                <ExportedImage
                   src={foundation.icon || "/placeholder.svg"}
                   alt={foundation.title}
                   width={160}

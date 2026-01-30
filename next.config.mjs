@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const basePath = process.env.BASE_PATH || '/chita.school';
+const basePath = process.env.BASE_PATH || '';
 
 const nextConfig = {
   output: 'export',

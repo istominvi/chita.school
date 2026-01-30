@@ -30,7 +30,7 @@ const plans = [
       "Государственная аттестация",
     ],
     note: "Ежегодный взнос — 30 000 ₽",
-    highlighted: true,
+    highlighted: false,
   },
 ]
 

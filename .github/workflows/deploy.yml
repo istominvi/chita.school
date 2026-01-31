@@ -80,7 +80,7 @@ jobs:
         run: echo "REPO_NAME=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
 
       - name: Build with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build
+        run: ${{ steps.detect-package-manager.outputs.manager }} run build
         env:
           NEXT_PUBLIC_BASE_PATH: /${{ env.REPO_NAME }}
 

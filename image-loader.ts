@@ -7,17 +7,19 @@ export default function myImageLoader({ src, width, quality }: { src: string, wi
     return src;
   }
 
-  // Clean basePath: remove trailing slash if present
-  const validBasePath = basePath.endsWith('/') ? basePath.slice(0, -1) : basePath;
+  // next-export-optimize-images naming convention
+  const rootPath = '/_next/static/chunks/images';
 
-  // Check if src already starts with basePath (to avoid duplication)
-  // Only check if validBasePath is not empty, otherwise it always matches
-  if (validBasePath && src.startsWith(validBasePath)) {
-    return src;
-  }
+  // Clean src: remove leading slash
+  const cleanSrc = src.startsWith('/') ? src.slice(1) : src;
 
-  // Clean src: ensure leading slash
-  const validSrc = src.startsWith('/') ? src : `/${src}`;
+  // Split filename and extension
+  const lastDotIndex = cleanSrc.lastIndexOf('.');
+  const name = lastDotIndex !== -1 ? cleanSrc.slice(0, lastDotIndex) : cleanSrc;
 
-  return `${validBasePath}${validSrc}`;
+  // We can use the original extension or webp. next-export-optimize-images generates both.
+  // Using webp for better optimization.
+  const optimizedSrc = `${rootPath}/${name}_${width}.webp`;
+
+  return `${basePath}${optimizedSrc}`;
 }

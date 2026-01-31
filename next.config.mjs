@@ -18,7 +18,6 @@ const nextConfig = {
   images: {
     loader: 'custom',
     loaderFile: './image-loader.ts',
-    unoptimized: true,
   },
   basePath: basePath,
   env: {
@@ -27,4 +26,6 @@ const nextConfig = {
   trailingSlash: true,
 }
 
-export default nextConfig
+import withExportOptimizeImages from 'next-export-optimize-images'
+
+export default withExportOptimizeImages(nextConfig)

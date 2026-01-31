@@ -7,13 +7,17 @@ export default function myImageLoader({ src, width, quality }: { src: string, wi
     return src;
   }
 
-  if (basePath && src.startsWith(basePath)) {
+  // Clean basePath: remove trailing slash if present
+  const validBasePath = basePath.endsWith('/') ? basePath.slice(0, -1) : basePath;
+
+  // Check if src already starts with basePath (to avoid duplication)
+  // Only check if validBasePath is not empty, otherwise it always matches
+  if (validBasePath && src.startsWith(validBasePath)) {
     return src;
   }
 
-  // Ensure we don't duplicate slashes
-  const cleanSrc = src.startsWith('/') ? src : `/${src}`;
-  const cleanBasePath = basePath.endsWith('/') ? basePath.slice(0, -1) : basePath;
+  // Clean src: ensure leading slash
+  const validSrc = src.startsWith('/') ? src : `/${src}`;
 
-  return `${cleanBasePath}${cleanSrc}`;
+  return `${validBasePath}${validSrc}`;
 }

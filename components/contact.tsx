@@ -164,8 +164,8 @@ export function Contact() {
                   </div>
                   <div>
                     <p className="font-medium text-foreground">Телефон</p>
-                    <a href="tel:+73022000000" className="text-muted-foreground hover:text-primary transition-colors">
-                      +7 (3022) 00-00-00
+                    <a href="tel:+79148017821" className="text-muted-foreground hover:text-primary transition-colors">
+                      +7 (914) 801-78-21
                     </a>
                   </div>
                 </div>
@@ -186,7 +186,7 @@ export function Contact() {
                   </div>
                   <div>
                     <p className="font-medium text-foreground">Адрес</p>
-                    <p className="text-muted-foreground">г. Чита</p>
+                    <p className="text-muted-foreground">г. Чита, Северный микрорайон, 54</p>
                   </div>
                 </div>
               </div>

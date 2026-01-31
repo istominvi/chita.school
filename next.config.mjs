@@ -1,3 +1,5 @@
+import withExportOptimizeImages from 'next-export-optimize-images'
+
 /** @type {import('next').NextConfig} */
 let basePath = process.env.BASE_PATH || process.env.NEXT_PUBLIC_BASE_PATH;
 
@@ -25,7 +27,5 @@ const nextConfig = {
   },
   trailingSlash: true,
 }
-
-import withExportOptimizeImages from 'next-export-optimize-images'
 
 export default withExportOptimizeImages(nextConfig)

@@ -41,15 +41,17 @@ export function Hero() {
               </span>
             </div>
             
-            <div className="flex items-center gap-4 mb-2">
-              <Image
-                src="/images/logo.png"
-                alt="Логотип школы"
-                width={80}
-                height={80}
-                className="w-16 h-16 sm:w-20 sm:h-20"
-              />
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-tight text-balance">
+            <div className="relative mb-2">
+              <div className="absolute -left-12 -top-10 w-56 h-56 sm:w-72 sm:h-72 z-[-1] pointer-events-none">
+                <Image
+                  src="/images/stamp.svg"
+                  alt=""
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+              <h1 className="relative text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-tight text-balance">
                 Евразийская<br />Начальная Школа
               </h1>
             </div>

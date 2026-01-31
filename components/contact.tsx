@@ -19,14 +19,6 @@ interface ContactFormData {
   message: string
 }
 
-interface SubmissionPayload {
-  "Дата и время": string
-  "Имя": string
-  "Телефон": string
-  "Email": string
-  "Сообщение": string
-}
-
 export function Contact() {
   const { toast } = useToast()
   const [formData, setFormData] = useState<ContactFormData>({
@@ -43,20 +35,12 @@ export function Contact() {
     setIsSubmitting(true)
     
     try {
-      const payload: SubmissionPayload = {
-        "Дата и время": new Date().toLocaleString("ru-RU"),
-        "Имя": formData.name,
-        "Телефон": formData.phone,
-        "Email": formData.email,
-        "Сообщение": formData.message,
-      }
-
       const response = await fetch(ENDPOINT_URL, {
         method: "POST",
         headers: {
           "Content-Type": "text/plain;charset=utf-8",
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(formData),
       })
 
       if (!response.ok) {

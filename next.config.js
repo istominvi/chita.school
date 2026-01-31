@@ -1,13 +1,11 @@
 /** @type {import('next').NextConfig} */
 let basePath = process.env.BASE_PATH || process.env.NEXT_PUBLIC_BASE_PATH;
 
-// If BASE_PATH is not defined, we are in GitHub Actions, and we have GITHUB_REPOSITORY
 if (!basePath && process.env.GITHUB_ACTIONS && process.env.GITHUB_REPOSITORY) {
   const repo = process.env.GITHUB_REPOSITORY.split('/')[1];
   basePath = `/${repo}`;
 }
 
-// Default to empty string if still not set (e.g. local dev or Vercel)
 basePath = basePath || '';
 
 const nextConfig = {
@@ -17,8 +15,7 @@ const nextConfig = {
   },
   images: {
     loader: 'custom',
-    loaderFile: './image-loader.ts',
-    unoptimized: true,
+    loaderFile: './lib/image-loader.ts',
   },
   basePath: basePath,
   env: {
@@ -27,4 +24,4 @@ const nextConfig = {
   trailingSlash: true,
 }
 
-export default nextConfig
+module.exports = nextConfig

@@ -7,9 +7,21 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Phone, Mail, MapPin } from "lucide-react"
+import { useToast } from "@/hooks/use-toast"
+import { Spinner } from "@/components/ui/spinner"
+
+const ENDPOINT_URL = "https://script.google.com/macros/s/AKfycbxlacIu_g6vR5KVrTVsemviA9pAFJ4zowxJs0zYPBhCcuXoMoW32DJM_d-vudTMNEnV8Q/exec"
+
+interface ContactFormData {
+  name: string
+  phone: string
+  email: string
+  message: string
+}
 
 export function Contact() {
-  const [formData, setFormData] = useState({
+  const { toast } = useToast()
+  const [formData, setFormData] = useState<ContactFormData>({
     name: "",
     phone: "",
     email: "",
@@ -22,15 +34,37 @@ export function Contact() {
     e.preventDefault()
     setIsSubmitting(true)
     
-    // Имитация отправки формы
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-    
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    setFormData({ name: "", phone: "", email: "", message: "" })
-    
-    // Сбросить состояние через 5 секунд
-    setTimeout(() => setIsSubmitted(false), 5000)
+    try {
+      const response = await fetch(ENDPOINT_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok")
+      }
+
+      toast({
+        description: "Заявка успешно отправлена!",
+      })
+
+      setIsSubmitted(true)
+      setFormData({ name: "", phone: "", email: "", message: "" })
+
+      // Сбросить состояние через 5 секунд
+      setTimeout(() => setIsSubmitted(false), 5000)
+    } catch (error) {
+      console.error("Form submission error:", error)
+      toast({
+        variant: "destructive",
+        description: "Ошибка отправки. Попробуйте позже.",
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -103,7 +137,12 @@ export function Contact() {
                 />
               </div>
               <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
-                {isSubmitting ? "Отправка..." : isSubmitted ? "Заявка отправлена!" : "Отправить заявку"}
+                {isSubmitting ? (
+                  <>
+                    <Spinner className="mr-2 h-4 w-4" />
+                    Отправка...
+                  </>
+                ) : isSubmitted ? "Заявка отправлена!" : "Отправить заявку"}
               </Button>
               {isSubmitted && (
                 <p className="text-sm text-primary text-center">

@@ -2,6 +2,7 @@ import React from "react"
 import type { Metadata, Viewport } from 'next'
 import { Cormorant_Garamond, Inter } from 'next/font/google'
 import './globals.css'
+import { Toaster } from "@/components/ui/toaster"
 
 const cormorant = Cormorant_Garamond({ 
   subsets: ["latin", "cyrillic"],
@@ -42,6 +43,7 @@ export default function RootLayout({
     <html lang="ru">
       <body className={`${inter.variable} ${cormorant.variable} font-sans antialiased`}>
         {children}
+        <Toaster />
       </body>
     </html>
   )

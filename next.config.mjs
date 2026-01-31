@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-let basePath = process.env.BASE_PATH;
+let basePath = process.env.BASE_PATH || process.env.NEXT_PUBLIC_BASE_PATH;
 
 // If BASE_PATH is not defined, we are in GitHub Actions, and we have GITHUB_REPOSITORY
 if (!basePath && process.env.GITHUB_ACTIONS && process.env.GITHUB_REPOSITORY) {
@@ -18,7 +18,6 @@ const nextConfig = {
   images: {
     loader: 'custom',
     loaderFile: './image-loader.ts',
-    unoptimized: true,
   },
   basePath: basePath,
   env: {

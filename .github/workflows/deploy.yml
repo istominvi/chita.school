@@ -76,10 +76,13 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
 
+      - name: Extract repository name
+        run: echo "REPO_NAME=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
+
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
         env:
-          BASE_PATH: /chita.school
+          NEXT_PUBLIC_BASE_PATH: /${{ env.REPO_NAME }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

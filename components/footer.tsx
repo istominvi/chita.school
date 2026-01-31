@@ -1,5 +1,4 @@
 import Link from "next/link"
-import Image from "next/image"
 
 const navigation = {
   main: [
@@ -15,21 +14,11 @@ const navigation = {
 export function Footer() {
   return (
     <footer className="border-t border-border bg-card">
-      <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
-          <div className="flex items-center gap-3">
-            <Image
-              src="/images/logo.png"
-              alt="Логотип Евразийской Школы"
-              width={48}
-              height={48}
-              className="w-12 h-12"
-            />
-            <span className="text-lg font-semibold text-foreground">
-              Евразийская Школа
-            </span>
-          </div>
-          
+      <div className="mx-auto max-w-7xl px-6 py-8 lg:px-8">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-muted-foreground">
+            © 2026 Евразийская Начальная Школа. Все права защищены.
+          </p>
           <nav className="flex flex-wrap justify-center gap-x-8 gap-y-4">
             {navigation.main.map((item) => (
               <Link
@@ -41,15 +30,6 @@ export function Footer() {
               </Link>
             ))}
           </nav>
-        </div>
-        
-        <div className="mt-8 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Евразийская Начальная Школа. Все права защищены.
-          </p>
-          <p className="text-sm text-muted-foreground">
-            г. Чита, Забайкальский край
-          </p>
         </div>
       </div>
     </footer>

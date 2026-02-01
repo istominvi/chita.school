@@ -41,18 +41,9 @@ export function Hero() {
               </span>
             </div>
             
-            <div className="flex items-center gap-4 mb-2">
-              <Image
-                src="/images/logo.png"
-                alt="Логотип школы"
-                width={80}
-                height={80}
-                className="w-16 h-16 sm:w-20 sm:h-20"
-              />
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-tight text-balance">
-                Евразийская<br />Начальная Школа
-              </h1>
-            </div>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-tight text-balance mb-2">
+              Евразийская<br />Начальная Школа
+            </h1>
             
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground max-w-xl text-pretty">
               Достигаем высоких академических результатов, сочетаем классические и инновационные методики преподавания в дружелюбной к ребенку атмосфере

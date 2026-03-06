@@ -6,8 +6,9 @@ import { BookOpen, Users, Clock, Award } from "lucide-react"
 const features = [
   {
     icon: BookOpen,
-    title: "Английский (с 0 класса) и китайский",
-    description: "(с 1 класса)",
+    title: "Английский (с 0 класса) и китайский\n(с 1 класса)",
+    description: "",
+    highlighted: true,
   },
   {
     icon: Users,
@@ -109,8 +110,14 @@ export function Hero() {
               <div className="w-11 h-11 rounded-xl bg-primary/15 flex items-center justify-center mb-4 group-hover:bg-primary/25 transition-colors">
                 <feature.icon className="w-5 h-5 text-primary" />
               </div>
-              <h3 className="font-semibold text-foreground mb-1 text-sm lg:text-base">{feature.title}</h3>
-              <p className="text-xs lg:text-sm text-muted-foreground">{feature.description}</p>
+              <h3
+                className={`text-foreground text-sm lg:text-base whitespace-pre-line ${feature.highlighted ? "font-bold" : "font-semibold mb-1"}`}
+              >
+                {feature.title}
+              </h3>
+              {feature.description && (
+                <p className="text-xs lg:text-sm text-muted-foreground">{feature.description}</p>
+              )}
             </div>
           ))}
         </div>

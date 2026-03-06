@@ -75,9 +75,9 @@ export function About() {
             </div>
             
             <div className="mt-8 p-6 rounded-2xl bg-secondary/10 border border-secondary/20">
-              <h4 className="font-semibold text-foreground mb-2">Набор на 2025/26 учебный год</h4>
+              <h4 className="font-semibold text-foreground mb-2">Набор на 2026-27 учебный год</h4>
               <p className="text-muted-foreground text-sm leading-relaxed">
-                Открыт набор в 0, 1, 2 и 3 классы. Присоединяйтесь к нашей школьной семье!
+                Открыт набор в 0, 1 и 2 классы. Присоединяйтесь к нашей школьной семье!
               </p>
             </div>
           </div>

@@ -6,8 +6,8 @@ import { BookOpen, Users, Clock, Award } from "lucide-react"
 const features = [
   {
     icon: BookOpen,
-    title: "Английский и китайский",
-    description: "Углубленное изучение с носителями",
+    title: "Английский (с 0 класса) и китайский",
+    description: "(с 1 класса)",
   },
   {
     icon: Users,
@@ -22,7 +22,7 @@ const features = [
   {
     icon: Award,
     title: "Гос. аттестация",
-    description: "Школьные документы",
+    description: "И полноценные школьные документы",
   },
 ]
 
@@ -37,7 +37,7 @@ export function Hero() {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               <span className="text-sm font-medium text-foreground">
-                Набор на 2025/26 год в 0-3 классы
+                Набор на 2026-27 год в 0-2 классы
               </span>
             </div>
             
@@ -54,7 +54,7 @@ export function Hero() {
                 <Link href="#contact">Записаться на знакомство</Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="text-base px-8 bg-transparent border-foreground/20 hover:bg-foreground/5">
-                <Link href="#about">Узнать больше</Link>
+                <Link href="#about">Получить презентацию</Link>
               </Button>
             </div>
           </div>

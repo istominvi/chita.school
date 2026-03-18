@@ -29,8 +29,13 @@ export function Header() {
               height={48}
               className="w-12 h-12"
             />
-            <span className="text-lg font-semibold text-foreground hidden sm:block">
-              Евразийская Школа
+            <span className="hidden sm:block">
+              <span className="block text-lg font-semibold text-foreground leading-tight">
+                Евразийская Начальная Школа
+              </span>
+              <span className="block text-xs text-muted-foreground leading-tight mt-0.5">
+                г. Чита, мкр. Северный, 54
+              </span>
             </span>
           </Link>
         </div>
@@ -82,7 +87,14 @@ export function Header() {
                   height={48}
                   className="w-12 h-12"
                 />
-                <span className="text-lg font-semibold">Евразийская Школа</span>
+                <span>
+                  <span className="block text-lg font-semibold leading-tight">
+                    Евразийская Начальная Школа
+                  </span>
+                  <span className="block text-xs text-muted-foreground leading-tight mt-0.5">
+                    г. Чита, мкр. Северный, 54
+                  </span>
+                </span>
               </Link>
               <button
                 type="button"

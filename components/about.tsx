@@ -85,8 +85,8 @@ export function About() {
           <div className="relative">
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
               <Image
-                src="/images/photo-18.jpg"
-                alt="Современный класс Helen Doron English"
+                src="/photos/chita_school_4.jpg"
+                alt="Ученики Евразийской начальной школы"
                 fill
                 className="object-cover"
               />

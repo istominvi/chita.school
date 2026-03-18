@@ -66,8 +66,8 @@ export function Hero() {
               <div className="space-y-4">
                 <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
                   <Image
-                    src="/images/photo-3.jpg"
-                    alt="Современный класс робототехники"
+                    src="/photos/chita_school_1.jpg"
+                    alt="Евразийская начальная школа в Чите"
                     fill
                     className="object-cover"
                     priority
@@ -75,8 +75,8 @@ export function Hero() {
                 </div>
                 <div className="relative aspect-square rounded-2xl overflow-hidden shadow-lg">
                   <Image
-                    src="/images/photo-18.jpg"
-                    alt="Класс английского языка Helen Doron"
+                    src="/photos/chita_school_2.jpg"
+                    alt="Занятия в Евразийской начальной школе"
                     fill
                     className="object-cover"
                   />
@@ -85,8 +85,8 @@ export function Hero() {
               <div className="pt-8">
                 <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-lg">
                   <Image
-                    src="/images/photo-28.jpg"
-                    alt="Светлый современный класс"
+                    src="/photos/chita_school_3.JPG"
+                    alt="Учебная атмосфера Евразийской начальной школы"
                     fill
                     className="object-cover"
                   />

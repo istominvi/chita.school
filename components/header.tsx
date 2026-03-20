@@ -29,11 +29,11 @@ export function Header() {
               height={48}
               className="w-12 h-12"
             />
-            <span className="hidden sm:block">
-              <span className="block text-lg font-semibold text-foreground leading-tight">
+            <span className="block min-w-0 max-w-[calc(100vw-9rem)] sm:max-w-none">
+              <span className="block text-xs sm:text-lg font-semibold text-foreground leading-tight">
                 Евразийская Начальная Школа
               </span>
-              <span className="block text-xs text-muted-foreground leading-tight mt-0.5">
+              <span className="block text-[10px] sm:text-xs text-muted-foreground leading-tight mt-0.5">
                 г. Чита, мкр. Северный, 54
               </span>
             </span>

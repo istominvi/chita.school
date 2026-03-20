@@ -1,9 +1,10 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Menu, X } from "lucide-react"
+import { createPortal } from "react-dom"
 import { Button } from "@/components/ui/button"
 
 const navigation = [
@@ -16,6 +17,11 @@ const navigation = [
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
@@ -29,11 +35,11 @@ export function Header() {
               height={48}
               className="w-12 h-12"
             />
-            <span className="hidden sm:block">
-              <span className="block text-lg font-semibold text-foreground leading-tight">
+            <span className="block min-w-0 max-w-[calc(100vw-9rem)] sm:max-w-none">
+              <span className="block text-xs sm:text-lg font-semibold text-foreground leading-tight">
                 Евразийская Начальная Школа
               </span>
-              <span className="block text-xs text-muted-foreground leading-tight mt-0.5">
+              <span className="block text-[10px] sm:text-xs text-muted-foreground leading-tight mt-0.5">
                 г. Чита, мкр. Северный, 54
               </span>
             </span>
@@ -71,13 +77,13 @@ export function Header() {
       </nav>
 
       {/* Mobile menu */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 z-50">
+      {isMounted && mobileMenuOpen && createPortal(
+        <div className="lg:hidden fixed inset-0 z-[100]">
           <div 
             className="fixed inset-0 bg-foreground/20 backdrop-blur-sm" 
             onClick={() => setMobileMenuOpen(false)} 
           />
-          <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-background px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-border">
+          <div className="fixed inset-y-0 right-0 z-[101] w-full overflow-y-auto bg-background px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-border">
             <div className="flex items-center justify-between">
               <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-3">
                 <Image
@@ -129,7 +135,8 @@ export function Header() {
               </div>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </header>
   )

@@ -74,7 +74,7 @@ export function Pricing() {
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`rounded-3xl p-8 lg:p-10 ${
+              className={`rounded-3xl p-8 lg:p-10 flex flex-col h-full ${
                 plan.highlighted
                   ? "bg-secondary text-secondary-foreground ring-2 ring-secondary"
                   : "bg-card border border-border"
@@ -114,19 +114,21 @@ export function Pricing() {
                   </li>
                 ))}
               </ul>
-              <p className={`text-sm mb-6 ${
-                plan.highlighted ? "text-secondary-foreground/70" : "text-muted-foreground"
-              }`}>
-                {plan.note}
-              </p>
-              <Button
-                asChild
-                variant={plan.highlighted ? "secondary" : "default"}
-                className="w-full"
-                size="lg"
-              >
-                <Link href="#contact">Получить консультацию</Link>
-              </Button>
+              <div className="mt-auto">
+                <p className={`text-sm mb-6 ${
+                  plan.highlighted ? "text-secondary-foreground/70" : "text-muted-foreground"
+                }`}>
+                  {plan.note}
+                </p>
+                <Button
+                  asChild
+                  variant={plan.highlighted ? "secondary" : "default"}
+                  className="w-full"
+                  size="lg"
+                >
+                  <Link href="#contact">Получить консультацию</Link>
+                </Button>
+              </div>
             </div>
           ))}
         </div>

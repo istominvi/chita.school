@@ -5,7 +5,7 @@ import { Check } from "lucide-react"
 const plans = [
   {
     name: "0 класс",
-    price: "24 900",
+    price: "35 000",
     period: "/ месяц",
     description: "Подготовка к школе",
     features: [
@@ -14,12 +14,12 @@ const plans = [
       "Развивающие занятия",
       "Полный день до 17:00",
     ],
-    note: "С дополнительными занятиями до 19:00 — 29 900 ₽",
+    note: "Вступительный взнос — 25 000 ₽",
     highlighted: false,
   },
   {
     name: "1-3 классы",
-    price: "29 900",
+    price: "36 000",
     period: "/ месяц",
     description: "Начальная школа",
     features: [
@@ -29,7 +29,7 @@ const plans = [
       "Продлёнка до 19:00",
       "Государственная аттестация",
     ],
-    note: "Ежегодный взнос — 30 000 ₽",
+    note: "Вступительный взнос — 35 000 ₽",
     highlighted: false,
   },
 ]

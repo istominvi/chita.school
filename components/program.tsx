@@ -51,8 +51,8 @@ const programs = [
   },
   {
     number: "03",
-    title: "Группа продлённого дня",
-    subtitle: "Продлёнка",
+    title: "Продлёнка",
+    subtitle: "Группа продлённого дня",
     age: "1–2 класс",
     cardClass: "bg-[#8ACED9]/16 border-[#8ACED9]/30",
     titleClass: "text-[#0f6f78]",
@@ -101,7 +101,7 @@ export function Program() {
               key={program.title}
               className={`relative flex min-h-[720px] flex-col overflow-hidden rounded-[2rem] border p-6 shadow-sm transition-transform duration-300 hover:-translate-y-1 lg:p-8 ${program.cardClass}`}
             >
-              <div className="flex items-start justify-between gap-4">
+              <div className="pr-20">
                 <div>
                   <p className="mb-3 text-sm font-medium text-muted-foreground">
                     {program.subtitle}
@@ -113,7 +113,7 @@ export function Program() {
                 <Link
                   href="#contact"
                   aria-label={`Получить подробное расписание: ${program.title}`}
-                  className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/90 shadow-sm transition-colors hover:bg-white"
+                  className="absolute right-6 top-6 flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/90 shadow-sm transition-colors hover:bg-white lg:right-8 lg:top-8"
                 >
                   <ArrowUpRight className={`h-7 w-7 ${program.iconClass}`} />
                 </Link>

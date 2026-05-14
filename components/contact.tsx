@@ -191,13 +191,6 @@ export function Contact() {
                 </div>
               </div>
             </div>
-
-            <div className="bg-background rounded-2xl p-6 border border-border">
-              <p className="text-foreground font-medium mb-2">
-                {'"'}Мама, тут здорово! А мои любимые предметы: математика, английский и инжинириум!{'"'}
-              </p>
-              <p className="text-sm text-muted-foreground">— Отзыв ученика</p>
-            </div>
           </div>
         </div>
       </div>

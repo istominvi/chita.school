@@ -1,6 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
+import { OpenDayBanner } from "@/components/open-day-banner"
 import { BookOpen, Users, Clock, Award } from "lucide-react"
 
 const features = [
@@ -100,8 +101,12 @@ export function Hero() {
           </div>
         </div>
 
+        <div className="mt-16">
+          <OpenDayBanner />
+        </div>
+
         {/* Features */}
-        <div className="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+        <div className="mt-14 grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
           {features.map((feature) => (
             <div
               key={feature.title}

@@ -31,7 +31,7 @@ export function OpenDayBanner() {
           >
             День открытых дверей
           </h2>
-          <p className="mt-2 text-3xl font-extrabold leading-tight text-blue-600 sm:text-4xl lg:text-5xl">
+          <p className="mt-2 text-3xl font-extrabold leading-tight text-secondary sm:text-4xl lg:text-5xl">
             19 мая в 18:30
           </p>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
@@ -41,7 +41,7 @@ export function OpenDayBanner() {
           <div className="mt-6 grid gap-3 sm:flex sm:flex-wrap">
             <Link
               href={DETAILS_URL}
-              className="inline-flex cursor-pointer items-center justify-center gap-3 rounded-full bg-blue-600 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-blue-600/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/30 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/30"
+              className="inline-flex cursor-pointer items-center justify-center gap-3 rounded-full bg-secondary px-6 py-3 text-base font-semibold text-secondary-foreground shadow-lg shadow-secondary/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-secondary/90 hover:shadow-xl hover:shadow-secondary/30 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-secondary/30"
             >
               Узнать подробнее
               <ArrowRight className="h-5 w-5" aria-hidden="true" />

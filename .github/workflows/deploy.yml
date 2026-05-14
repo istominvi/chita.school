@@ -50,7 +50,7 @@ jobs:
         if: steps.detect-package-manager.outputs.manager == 'pnpm'
         uses: pnpm/action-setup@v3
         with:
-          version: "latest"
+          version: "10.28.1"
 
       - name: Setup Node
         uses: actions/setup-node@v4

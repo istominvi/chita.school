@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, Send } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 
 const DETAILS_URL = "#contact"
 const MAX_URL = "https://max.ru/chita.school"
@@ -53,8 +53,8 @@ export function OpenDayBanner() {
               aria-label="Открыть сообщество школы в MAX"
               className="inline-flex cursor-pointer items-center justify-center gap-3 rounded-full bg-white/90 px-5 py-3 text-base font-semibold text-foreground shadow-md ring-1 ring-foreground/10 transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:shadow-lg focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/30"
             >
-              <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 via-blue-500 to-cyan-400 text-sm font-black text-white shadow-sm">
-                M
+              <span className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-xl shadow-sm" aria-hidden="true">
+                <img src="/MAX.svg" alt="" className="h-full w-full object-contain" />
               </span>
               MAX
             </a>
@@ -65,8 +65,8 @@ export function OpenDayBanner() {
               aria-label="Открыть Telegram школы"
               className="inline-flex cursor-pointer items-center justify-center gap-3 rounded-full bg-white/90 px-5 py-3 text-base font-semibold text-foreground shadow-md ring-1 ring-foreground/10 transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:shadow-lg focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-400/30"
             >
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-sky-500 text-white shadow-sm">
-                <Send className="h-4 w-4" aria-hidden="true" />
+              <span className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full shadow-sm" aria-hidden="true">
+                <img src="/Telegram.svg" alt="" className="h-full w-full object-contain" />
               </span>
               Telegram
             </a>

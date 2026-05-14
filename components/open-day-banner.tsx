@@ -77,8 +77,8 @@ export function OpenDayBanner() {
           <div className="absolute inset-0 translate-x-4 rounded-[2rem] bg-primary/15 blur-2xl" aria-hidden="true" />
           <div className="relative h-full min-h-[210px] overflow-hidden rounded-[1.75rem] border-8 border-white bg-muted shadow-2xl md:min-h-[235px] lg:min-h-[260px] lg:[clip-path:ellipse(76%_68%_at_54%_50%)]">
             <Image
-              src="/photos/chita_school_1.jpg"
-              alt="Ученица Евразийской начальной школы на занятии"
+              src="/photos/dayofopendoors.png"
+              alt="День открытых дверей в Евразийской начальной школе"
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1280px) 38vw, 520px"
               className="object-cover object-[56%_52%]"

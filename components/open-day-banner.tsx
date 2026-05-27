@@ -32,7 +32,7 @@ export function OpenDayBanner() {
             День открытых дверей
           </h2>
           <p className="mt-2 text-3xl font-extrabold leading-tight text-secondary sm:text-4xl lg:text-5xl">
-            27 мая в 18:30
+            2 июня в 18:30
           </p>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
             Покажем школу, познакомим с командой и ответим на вопросы о поступлении в 0–2 классы.

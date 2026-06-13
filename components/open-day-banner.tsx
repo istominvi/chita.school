@@ -1,8 +1,8 @@
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, Gift } from "lucide-react"
 
-const DETAILS_URL = "#contact"
+const MATERIALS_URL = "https://max.ru/id753611991489_bot?start=c1775561912493-ds"
 const MAX_URL = "https://max.ru/chita.school"
 const TELEGRAM_URL = "https://t.me/chita_school"
 
@@ -23,27 +23,41 @@ export function OpenDayBanner() {
       <div className="relative z-10 grid items-center gap-8 md:grid-cols-[minmax(0,1fr)_minmax(260px,38%)] lg:grid-cols-[minmax(0,1fr)_minmax(360px,42%)]">
         <div className="max-w-2xl">
           <p className="mb-3 inline-flex rounded-full bg-primary/15 px-4 py-2 text-sm font-semibold text-foreground shadow-sm ring-1 ring-primary/20">
-            Приглашаем родителей и детей
+            Полезные материалы для родителей
           </p>
           <h2
             id="open-day-title"
             className="text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl"
           >
-            День открытых дверей
+            Дарим три полезных документа
           </h2>
-          <p className="mt-2 text-3xl font-extrabold leading-tight text-secondary sm:text-4xl lg:text-5xl">
-            2 июня в 18:30
-          </p>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Покажем школу, познакомим с командой и ответим на вопросы о поступлении в 0–2 классы.
+            Помогаем понять, готов ли ребенок к школе, что он чувствует перед школой и стоит ли обратить внимание на частые ошибки при письме.
           </p>
+
+          <ul className="mt-5 grid gap-3 text-base font-medium text-foreground sm:text-lg">
+            <li className="flex gap-3">
+              <Gift className="mt-1 h-5 w-5 shrink-0 text-secondary" aria-hidden="true" />
+              <span>Чек-лист готовности к первому классу (требования ФГОС, госшколы).</span>
+            </li>
+            <li className="flex gap-3">
+              <Gift className="mt-1 h-5 w-5 shrink-0 text-secondary" aria-hidden="true" />
+              <span>Тест, что ребёнок чувствует перед школой.</span>
+            </li>
+            <li className="flex gap-3">
+              <Gift className="mt-1 h-5 w-5 shrink-0 text-secondary" aria-hidden="true" />
+              <span>Тест на дисграфию.</span>
+            </li>
+          </ul>
 
           <div className="mt-6 grid gap-3 sm:flex sm:flex-wrap">
             <Link
-              href={DETAILS_URL}
+              href={MATERIALS_URL}
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex cursor-pointer items-center justify-center gap-3 rounded-full bg-secondary px-6 py-3 text-base font-semibold text-secondary-foreground shadow-lg shadow-secondary/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-secondary/90 hover:shadow-xl hover:shadow-secondary/30 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-secondary/30"
             >
-              Узнать подробнее
+              Получить материалы
               <ArrowRight className="h-5 w-5" aria-hidden="true" />
             </Link>
             <a
@@ -78,7 +92,7 @@ export function OpenDayBanner() {
           <div className="relative h-full min-h-[210px] overflow-hidden rounded-[1.75rem] border-8 border-white bg-muted shadow-2xl md:min-h-[235px] lg:min-h-[260px] lg:[clip-path:ellipse(76%_68%_at_54%_50%)]">
             <Image
               src="/photos/dayofopendoors.png"
-              alt="День открытых дверей в Евразийской начальной школе"
+              alt="Дарим три полезных документа в Евразийской начальной школе"
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1280px) 38vw, 520px"
               className="object-cover object-[56%_52%]"

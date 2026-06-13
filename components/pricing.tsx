@@ -5,22 +5,22 @@ import { Check } from "lucide-react"
 const plans = [
   {
     name: "0 класс",
-    price: "35 000",
-    period: "/ месяц",
+    price: "20 000",
+    period: "руб./месяц",
     description: "Подготовка к школе",
     features: [
       "Подготовка к 1 классу",
       "Английский язык",
       "Развивающие занятия",
       "Полный день до 17:00",
+      "Питание — 680 руб./день",
     ],
-    note: "Вступительный взнос — 25 000 ₽",
     highlighted: false,
   },
   {
     name: "1-3 классы",
-    price: "36 000",
-    period: "/ месяц",
+    price: "20 000",
+    period: "руб./месяц",
     description: "Начальная школа",
     features: [
       "Полная программа ФГОС",
@@ -28,8 +28,8 @@ const plans = [
       "Все дополнительные занятия",
       "Продлёнка до 19:00",
       "Государственная аттестация",
+      "Питание — 727 руб./день",
     ],
-    note: "Вступительный взнос — 35 000 ₽",
     highlighted: false,
   },
 ]
@@ -115,11 +115,6 @@ export function Pricing() {
                 ))}
               </ul>
               <div className="mt-auto">
-                <p className={`text-sm mb-6 ${
-                  plan.highlighted ? "text-secondary-foreground/70" : "text-muted-foreground"
-                }`}>
-                  {plan.note}
-                </p>
                 <Button
                   asChild
                   variant={plan.highlighted ? "secondary" : "default"}

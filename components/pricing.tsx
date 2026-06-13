@@ -13,8 +13,8 @@ const plans = [
       "Английский язык",
       "Развивающие занятия",
       "Полный день до 17:00",
+      "Питание — 680 руб./день",
     ],
-    note: "Питание — 680 руб./день",
     highlighted: false,
   },
   {
@@ -28,8 +28,8 @@ const plans = [
       "Все дополнительные занятия",
       "Продлёнка до 19:00",
       "Государственная аттестация",
+      "Питание — 727 руб./день",
     ],
-    note: "Питание — 727 руб./день",
     highlighted: false,
   },
 ]
@@ -115,11 +115,6 @@ export function Pricing() {
                 ))}
               </ul>
               <div className="mt-auto">
-                <p className={`text-sm mb-6 ${
-                  plan.highlighted ? "text-secondary-foreground/70" : "text-muted-foreground"
-                }`}>
-                  {plan.note}
-                </p>
                 <Button
                   asChild
                   variant={plan.highlighted ? "secondary" : "default"}

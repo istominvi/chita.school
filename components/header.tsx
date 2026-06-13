@@ -8,11 +8,12 @@ import { createPortal } from "react-dom"
 import { Button } from "@/components/ui/button"
 
 const navigation = [
-  { name: "О школе", href: "#about" },
-  { name: "Программа", href: "#program" },
-  { name: "Занятия", href: "#activities" },
-  { name: "Стоимость", href: "#pricing" },
-  { name: "Вопросы", href: "#faq" },
+  { name: "Продлёнка", href: "/prodlenka", highlighted: true },
+  { name: "О школе", href: "/#about" },
+  { name: "Программа", href: "/#program" },
+  { name: "Занятия", href: "/#activities" },
+  { name: "Стоимость", href: "/#pricing" },
+  { name: "Вопросы", href: "/#faq" },
 ]
 
 export function Header() {
@@ -62,7 +63,10 @@ export function Header() {
             <Link
               key={item.name}
               href={item.href}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              className={item.highlighted
+                ? "rounded-full bg-amber-300 px-4 py-2 text-sm font-extrabold text-amber-950 shadow-sm ring-1 ring-amber-400/60 transition hover:-translate-y-0.5 hover:bg-amber-200 hover:shadow-md"
+                : "text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              }
             >
               {item.name}
             </Link>
@@ -71,7 +75,7 @@ export function Header() {
         
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Button asChild>
-            <Link href="#contact">Записаться</Link>
+            <Link href="/#contact">Записаться</Link>
           </Button>
         </div>
       </nav>
@@ -118,7 +122,10 @@ export function Header() {
                     <Link
                       key={item.name}
                       href={item.href}
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-medium text-foreground hover:bg-muted"
+                      className={item.highlighted
+                        ? "-mx-3 block rounded-lg bg-amber-300 px-3 py-2 text-base font-extrabold text-amber-950 shadow-sm"
+                        : "-mx-3 block rounded-lg px-3 py-2 text-base font-medium text-foreground hover:bg-muted"
+                      }
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {item.name}
@@ -127,7 +134,7 @@ export function Header() {
                 </div>
                 <div className="py-6">
                   <Button asChild className="w-full">
-                    <Link href="#contact" onClick={() => setMobileMenuOpen(false)}>
+                    <Link href="/#contact" onClick={() => setMobileMenuOpen(false)}>
                       Записаться на знакомство
                     </Link>
                   </Button>

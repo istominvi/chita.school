@@ -5,7 +5,7 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Contact } from "@/components/contact"
 import { Button } from "@/components/ui/button"
-import { BookOpenCheck, Clock, Download, Gamepad2, HeartHandshake, Sparkles, Utensils, UsersRound } from "lucide-react"
+import { BookOpenCheck, Bus, CheckCircle2, Clock, Download, Gamepad2, GraduationCap, HeartHandshake, Languages, MessageCircle, Palette, Presentation, Puzzle, Sparkles, Utensils, UsersRound } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Продлёнка в Чите | Евразийская Начальная Школа",
@@ -37,17 +37,42 @@ const benefits = [
 ]
 
 const schedule = [
-  ["После уроков", "обед, отдых, переключение после учебного дня"],
-  ["Днём", "прогулка, кружки, творческие и игровые активности"],
-  ["Вторая половина", "спокойная работа над домашними заданиями с педагогом"],
-  ["До 19:00", "свободное время, чтение, настольные игры и встреча родителей"],
+  ["После уроков", "забираем детей из 27-й и 22-й школ, обедаем и мягко переключаемся после учебного дня"],
+  ["Днём", "обязательные занятия: домашние задания, английский, эмоциональный интеллект, «Читайка», творчество и проекты"],
+  ["Кружки", "по выбору ребёнка: китайский язык, робототехника, программирование, танцы, театр и живопись"],
+  ["До 17:00 или 19:00", "два графика на выбор, спокойное свободное время и обратная связь для родителей"],
 ]
 
 const formats = [
   "для учеников начальной школы",
-  "можно оставаться после основных занятий",
-  "подходит семьям, где родителям важно спокойно закрыть рабочий день",
-  "всё проходит в знакомой школьной среде",
+  "детей забираем из 27-й и 22-й школ",
+  "два графика: до 17:00 и до 19:00",
+  "каждый шаг с обратной связью для родителей",
+]
+
+const heroHighlights = [
+  { icon: BookOpenCheck, text: "Домашние задания без слёз" },
+  { icon: Bus, text: "Забираем детей сами из 27-й и 22-й школ" },
+  { icon: Clock, text: "Два графика: до 17:00 и до 19:00" },
+  { icon: MessageCircle, text: "Родители в курсе всего — каждый шаг с обратной связью" },
+]
+
+const requiredActivities = [
+  "Выполнение домашних заданий и помощь в освоении школьной программы",
+  "Английский язык",
+  "Эмоциональный интеллект",
+  "«Читайка»",
+  "Творчество",
+  "Проектная деятельность",
+]
+
+const optionalActivities = [
+  "Китайский язык",
+  "Робототехника",
+  "Программирование",
+  "Современные танцы",
+  "Театральная студия",
+  "Школа живописи",
 ]
 
 export default function ProdlenkaPage() {
@@ -68,11 +93,11 @@ export default function ProdlenkaPage() {
                 Продлёнка, где ребёнок не просто «досиживает»
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground sm:text-xl">
-                Берём на себя самое нервное после школы: режим, питание, домашние задания, прогулки и тёплую атмосферу. Родители спокойно работают, дети проводят день с пользой.
+                Берём на себя самое нервное после школы: режим, питание, домашние задания, прогулки и тёплую атмосферу. Родители спокойно работают, дети проводят день с пользой, а домашка не переезжает на поздний вечер.
               </p>
               <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                 <Button asChild size="lg" className="bg-secondary px-8 text-base text-secondary-foreground hover:bg-secondary/90">
-                  <Link href="#contact">Записаться на продлёнку</Link>
+                  <Link href="#contact">Получить презентацию</Link>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="bg-white/60 px-8 text-base">
                   <Link href="/prodlenka.pdf" target="_blank">
@@ -80,6 +105,16 @@ export default function ProdlenkaPage() {
                     Открыть PDF
                   </Link>
                 </Button>
+              </div>
+              <div className="mt-10 grid gap-3 sm:grid-cols-2">
+                {heroHighlights.map((item) => (
+                  <div key={item.text} className="flex items-center gap-3 rounded-2xl border border-white/70 bg-white/75 p-4 shadow-sm backdrop-blur">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-200 text-amber-900">
+                      <item.icon className="h-5 w-5" />
+                    </div>
+                    <p className="text-sm font-semibold text-foreground">{item.text}</p>
+                  </div>
+                ))}
               </div>
             </div>
             <div className="relative">
@@ -111,6 +146,32 @@ export default function ProdlenkaPage() {
         </section>
 
         <section className="py-20 lg:py-28">
+          <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
+            <div className="rounded-[2rem] bg-primary/15 p-8 lg:p-10">
+              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-primary shadow-sm">
+                <GraduationCap className="h-7 w-7" />
+              </div>
+              <h2 className="text-3xl font-bold text-foreground sm:text-4xl">Почему нам доверяют</h2>
+              <p className="mt-5 text-lg leading-8 text-muted-foreground">
+                Школа выросла из сети международных школ английского языка, которая давно работает в Чите. Мы уделяем английскому особое внимание: дети изучают язык как второй родной и к 4 классу готовятся к международным экзаменам.
+              </p>
+            </div>
+            <div className="grid gap-5 sm:grid-cols-2">
+              <article className="rounded-3xl border border-border bg-card p-6 shadow-sm">
+                <Languages className="mb-4 h-8 w-8 text-secondary" />
+                <h3 className="text-xl font-bold text-foreground">Английский без лишних поездок</h3>
+                <p className="mt-3 text-sm leading-6 text-muted-foreground">Те, кто остаётся на продлёнке до 19:00, могут посещать дополнительные занятия по английскому в привычной среде.</p>
+              </article>
+              <article className="rounded-3xl border border-border bg-card p-6 shadow-sm">
+                <MessageCircle className="mb-4 h-8 w-8 text-secondary" />
+                <h3 className="text-xl font-bold text-foreground">Родители не в тумане</h3>
+                <p className="mt-3 text-sm leading-6 text-muted-foreground">Держим родителей в курсе: как прошёл день, что получилось, где нужна поддержка и как ребёнок себя чувствует.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 lg:py-28">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="text-3xl font-bold text-foreground sm:text-4xl">Что внутри программы</h2>
@@ -126,6 +187,43 @@ export default function ProdlenkaPage() {
                   <p className="mt-3 text-sm leading-6 text-muted-foreground">{item.text}</p>
                 </article>
               ))}
+            </div>
+          </div>
+        </section>
+
+
+
+        <section className="pb-20 lg:pb-28">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="grid gap-6 lg:grid-cols-2">
+              <div className="rounded-[2rem] border border-border bg-card p-8 shadow-sm">
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/15">
+                  <Presentation className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="text-2xl font-bold text-foreground">Обязательные занятия всегда включены</h3>
+                <ul className="mt-6 space-y-3">
+                  {requiredActivities.map((activity) => (
+                    <li key={activity} className="flex gap-3 text-sm leading-6 text-foreground">
+                      <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+                      {activity}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="rounded-[2rem] border border-border bg-secondary p-8 text-secondary-foreground shadow-sm">
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/15">
+                  <Palette className="h-6 w-6" />
+                </div>
+                <h3 className="text-2xl font-bold">Дополнительные занятия по выбору ребёнка</h3>
+                <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                  {optionalActivities.map((activity) => (
+                    <div key={activity} className="flex items-center gap-3 rounded-2xl bg-white/10 p-3 text-sm font-medium">
+                      <Puzzle className="h-4 w-4 shrink-0" />
+                      {activity}
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -151,6 +249,29 @@ export default function ProdlenkaPage() {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 lg:py-28">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="grid gap-8 rounded-[2rem] border border-border bg-card p-8 shadow-sm lg:grid-cols-[0.8fr_1.2fr] lg:p-10">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">кто рядом с детьми</p>
+                <h2 className="mt-3 text-3xl font-bold text-foreground sm:text-4xl">Занятия ведут два постоянных педагога</h2>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="rounded-3xl bg-background p-6">
+                  <UsersRound className="mb-4 h-7 w-7 text-primary" />
+                  <h3 className="font-bold text-foreground">Основной педагог</h3>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">Помогает с домашними заданиями, ведёт образовательный ритм и поддерживает ребёнка в учебных задачах.</p>
+                </div>
+                <div className="rounded-3xl bg-background p-6">
+                  <HeartHandshake className="mb-4 h-7 w-7 text-primary" />
+                  <h3 className="font-bold text-foreground">Воспитатель</h3>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">Отвечает за стабильность, режим, тёплую атмосферу и спокойное течение дня на продлёнке.</p>
+                </div>
+              </div>
             </div>
           </div>
         </section>

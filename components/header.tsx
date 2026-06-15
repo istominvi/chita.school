@@ -7,8 +7,9 @@ import { Menu, X } from "lucide-react"
 import { createPortal } from "react-dom"
 import { Button } from "@/components/ui/button"
 
+const prodlenkaNavigationItem = { name: "Продлёнка", href: "/prodlenka" }
+
 const navigation = [
-  { name: "Продлёнка", href: "/prodlenka", highlighted: true },
   { name: "О школе", href: "/#about" },
   { name: "Программа", href: "/#program" },
   { name: "Занятия", href: "/#activities" },
@@ -37,7 +38,7 @@ export function Header() {
               className="w-12 h-12"
             />
             <span className="block min-w-0 max-w-[calc(100vw-9rem)] sm:max-w-none">
-              <span className="block text-xs sm:text-lg font-semibold text-foreground leading-tight">
+              <span className="block text-xs sm:text-lg font-semibold text-foreground leading-tight lg:whitespace-nowrap">
                 Евразийская Начальная Школа
               </span>
               <span className="block text-[10px] sm:text-xs text-muted-foreground leading-tight mt-0.5">
@@ -63,17 +64,20 @@ export function Header() {
             <Link
               key={item.name}
               href={item.href}
-              className={item.highlighted
-                ? "rounded-full bg-amber-300 px-4 py-2 text-sm font-extrabold text-amber-950 shadow-sm ring-1 ring-amber-400/60 transition hover:-translate-y-0.5 hover:bg-amber-200 hover:shadow-md"
-                : "text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              }
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               {item.name}
             </Link>
           ))}
         </div>
         
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+        <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:gap-3">
+          <Link
+            href={prodlenkaNavigationItem.href}
+            className="rounded-full bg-amber-300 px-4 py-2 text-sm font-extrabold text-amber-950 shadow-sm ring-1 ring-amber-400/60 transition hover:-translate-y-0.5 hover:bg-amber-200 hover:shadow-md"
+          >
+            {prodlenkaNavigationItem.name}
+          </Link>
           <Button asChild>
             <Link href="/#contact">Записаться</Link>
           </Button>
@@ -118,14 +122,18 @@ export function Header() {
             <div className="mt-6 flow-root">
               <div className="-my-6 divide-y divide-border">
                 <div className="space-y-2 py-6">
+                  <Link
+                    href={prodlenkaNavigationItem.href}
+                    className="-mx-3 block rounded-lg bg-amber-300 px-3 py-2 text-base font-extrabold text-amber-950 shadow-sm"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {prodlenkaNavigationItem.name}
+                  </Link>
                   {navigation.map((item) => (
                     <Link
                       key={item.name}
                       href={item.href}
-                      className={item.highlighted
-                        ? "-mx-3 block rounded-lg bg-amber-300 px-3 py-2 text-base font-extrabold text-amber-950 shadow-sm"
-                        : "-mx-3 block rounded-lg px-3 py-2 text-base font-medium text-foreground hover:bg-muted"
-                      }
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-medium text-foreground hover:bg-muted"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {item.name}

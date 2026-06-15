@@ -75,6 +75,63 @@ const optionalActivities = [
   "Школа живописи",
 ]
 
+const dayGalleryPhotos = [
+  {
+    src: "/photos/prodlenka_2.jpg",
+    alt: "Дети выполняют задания на продлёнке",
+    frameClassName: "aspect-[4/5]",
+    imageClassName: "object-[52%_54%]",
+  },
+  {
+    src: "/photos/prodlenka_3.jpg",
+    alt: "Дети показывают творческие работы на продлёнке",
+    frameClassName: "aspect-square",
+    imageClassName: "object-[50%_42%]",
+  },
+  {
+    src: "/photos/prodlenka_4.jpg",
+    alt: "Ученица пишет за партой на продлёнке",
+    frameClassName: "aspect-[4/5]",
+    imageClassName: "object-[54%_48%]",
+  },
+  {
+    src: "/photos/prodlenka_5.jpg",
+    alt: "Дети делают творческое задание на продлёнке",
+    frameClassName: "aspect-[4/5]",
+    imageClassName: "object-[48%_48%]",
+  },
+  {
+    src: "/photos/prodlenka_6.jpg",
+    alt: "Группа детей занимается творчеством",
+    frameClassName: "aspect-[4/5]",
+    imageClassName: "object-[52%_52%]",
+  },
+  {
+    src: "/photos/prodlenka_7.jpg",
+    alt: "Дети общаются за столом на продлёнке",
+    frameClassName: "aspect-square",
+    imageClassName: "object-[55%_52%]",
+  },
+  {
+    src: "/photos/prodlenka_8.jpg",
+    alt: "Кабинет для занятий продлёнки",
+    frameClassName: "aspect-[4/5]",
+    imageClassName: "object-[48%_48%]",
+  },
+  {
+    src: "/photos/prodlenka_9.jpg",
+    alt: "Дети делают поделки из бумаги",
+    frameClassName: "aspect-[4/5]",
+    imageClassName: "object-[58%_50%]",
+  },
+  {
+    src: "/photos/prodlenka_10.jpg",
+    alt: "Ребёнок показывает поделку на продлёнке",
+    frameClassName: "aspect-square",
+    imageClassName: "object-[52%_48%]",
+  },
+]
+
 export default function ProdlenkaPage() {
   return (
     <>
@@ -145,7 +202,23 @@ export default function ProdlenkaPage() {
           </div>
         </section>
 
-        <section className="py-20 lg:py-28">
+        <section className="-mt-8 pb-10 lg:-mt-12 lg:pb-14">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="overflow-hidden rounded-[2rem] border border-white/70 bg-white p-3 shadow-2xl">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem] sm:aspect-[16/9] lg:aspect-[16/7]">
+                <Image
+                  src="/photos/prodlenka_1.jpg"
+                  alt="Дети занимаются на продлёнке в Евразийской начальной школе"
+                  fill
+                  sizes="(min-width: 1280px) 1216px, calc(100vw - 48px)"
+                  className="object-cover object-[54%_54%]"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="pt-10 pb-20 lg:pt-14 lg:pb-28">
           <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
             <div className="rounded-[2rem] bg-primary/15 p-8 lg:p-10">
               <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-primary shadow-sm">
@@ -175,7 +248,6 @@ export default function ProdlenkaPage() {
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="text-3xl font-bold text-foreground sm:text-4xl">Что внутри программы</h2>
-              <p className="mt-4 text-lg text-muted-foreground">Лэндинг-версия по материалам PDF: собрали ключевые смыслы в понятные блоки для родителей.</p>
             </div>
             <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
               {benefits.map((item) => (
@@ -236,6 +308,21 @@ export default function ProdlenkaPage() {
               <div className="mt-8 flex flex-wrap gap-3">
                 {formats.map((format) => (
                   <span key={format} className="rounded-full bg-background px-4 py-2 text-sm font-medium text-foreground ring-1 ring-border">{format}</span>
+                ))}
+              </div>
+              <div className="mt-12 columns-2 gap-3 sm:columns-3 sm:gap-4">
+                {dayGalleryPhotos.map((photo) => (
+                  <div key={photo.src} className="mb-3 break-inside-avoid overflow-hidden rounded-2xl bg-background shadow-lg ring-1 ring-border/70 sm:mb-4">
+                    <div className={`relative ${photo.frameClassName}`}>
+                      <Image
+                        src={photo.src}
+                        alt={photo.alt}
+                        fill
+                        sizes="(min-width: 1024px) 180px, (min-width: 640px) 30vw, 45vw"
+                        className={`object-cover ${photo.imageClassName}`}
+                      />
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>

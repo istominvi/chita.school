@@ -7,6 +7,11 @@ export default function myImageLoader({ src, width, quality }: { src: string, wi
     return src;
   }
 
+  if (process.env.NODE_ENV === 'development') {
+    const publicSrc = src.startsWith('/') ? src : `/${src}`;
+    return `${basePath}${publicSrc}`;
+  }
+
   // next-export-optimize-images naming convention
   const rootPath = '/_next/static/chunks/images';
 

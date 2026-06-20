@@ -10,37 +10,36 @@ import { BookOpenCheck, Bus, CheckCircle2, Clock, Download, Gamepad2, Graduation
 export const metadata: Metadata = {
   title: "Продлёнка в Чите | Евразийская Начальная Школа",
   description:
-    "Продлёнка для младших школьников в Евразийской Начальной Школе: домашние задания, прогулки, питание, творчество и спокойный вечер до 19:00.",
+    "Группа продлённого дня для 1–2 классов в Северном микрорайоне Читы: домашние задания, прогулки, питание, творчество и спокойный вечер до 19:00.",
 }
 
 const benefits = [
   {
     icon: BookOpenCheck,
-    title: "Домашка без семейных батлов",
-    text: "Педагог помогает разобрать задания, довести их до результата и оставить вечер дома для отдыха.",
+    title: "Домашние задания под присмотром педагога",
+    text: "Педагог помогает разобрать школьную программу, выполнить сложные задания. Учит ответственности и самоорганизации.",
   },
   {
     icon: Utensils,
     title: "Питание и режим",
-    text: "Обед, полдник, питьевой режим и понятное расписание, чтобы ребёнок не выгорал после уроков.",
+    text: "Качественное питание организовано в отдельной столовой школы комбинатом детского питания. Обед и полдник или завтрак и обед в зависимости от графика посещения.",
   },
   {
     icon: Gamepad2,
-    title: "Игры, творчество, движение",
-    text: "Настолки, мастер-классы, прогулки и активные паузы вместо бесконечного ожидания родителей.",
+    title: "Дополнительные занятия в том же здании",
+    text: "Эмоциональный интеллект, «Читайка», английский, творчество включены в обязательную программу. Дети, которые остаются до 19:00, посещают ещё два кружка на выбор.",
   },
   {
     icon: HeartHandshake,
-    title: "Безопасно и по-доброму",
-    text: "Ребёнок остаётся в школьном пространстве под присмотром взрослых, которые знают детей по именам.",
+    title: "Атмосфера развития и дружбы",
+    text: "После школы детям необходима эмоциональная разгрузка и возможность выдохнуть. Мы работаем над дружным коллективом детей, проводим занятия с психологом и организуем пространство, где хочется дружить и общаться.",
   },
 ]
 
 const schedule = [
-  ["После уроков", "забираем детей из 27-й и 22-й школ, обедаем и мягко переключаемся после учебного дня"],
-  ["Днём", "обязательные занятия: домашние задания, английский, эмоциональный интеллект, «Читайка», творчество и проекты"],
-  ["Кружки", "по выбору ребёнка: китайский язык, робототехника, программирование, танцы, театр и живопись"],
-  ["До 17:00 или 19:00", "два графика на выбор, спокойное свободное время и обратная связь для родителей"],
+  ["После уроков", "забираем детей из 27-й и 22-й школ, сообщаем родителям, обедаем и мягко переключаемся после учебного дня"],
+  ["Днём", "прогулки и игры на свежем воздухе. Обязательные занятия: домашние задания, английский, эмоциональный интеллект, «Читайка», творчество и проекты. Полдник"],
+  ["С 17:00 или 19:00", "кружки по выбору, спокойное свободное время и обратная связь по прошедшему дню для родителей"],
 ]
 
 const formats = [
@@ -53,8 +52,8 @@ const formats = [
 const heroHighlights = [
   { icon: BookOpenCheck, text: "Домашние задания без слёз" },
   { icon: Bus, text: "Забираем детей сами из 27-й и 22-й школ" },
-  { icon: Clock, text: "Два графика: до 17:00 и до 19:00" },
-  { icon: MessageCircle, text: "Родители в курсе всего — каждый шаг с обратной связью" },
+  { icon: Clock, text: "Два графика — для первой и второй смен" },
+  { icon: MessageCircle, text: "Обратная связь — присылаем сообщения о том, где сейчас ребёнок" },
 ]
 
 const requiredActivities = [
@@ -144,13 +143,13 @@ export default function ProdlenkaPage() {
             <div>
               <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-secondary/30 bg-secondary/10 px-4 py-2 text-sm font-semibold text-secondary">
                 <Sparkles className="h-4 w-4" />
-                Новая отдельная программа
+                Северный мкр. Чита
               </div>
               <h1 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-                Продлёнка, где ребёнок не просто «досиживает»
+                Группа продлённого дня для 1–2 классов
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground sm:text-xl">
-                Берём на себя самое нервное после школы: режим, питание, домашние задания, прогулки и тёплую атмосферу. Родители спокойно работают, дети проводят день с пользой, а домашка не переезжает на поздний вечер.
+                Сочетаем тёплую атмосферу, поддержку взрослых, развивающую среду и системную работу — чтобы ребёнку было комфортно учиться, отдыхать и развиваться после школы.
               </p>
               <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                 <Button asChild size="lg" className="bg-secondary px-8 text-base text-secondary-foreground hover:bg-secondary/90">
@@ -232,13 +231,13 @@ export default function ProdlenkaPage() {
             <div className="grid gap-5 sm:grid-cols-2">
               <article className="rounded-3xl border border-border bg-card p-6 shadow-sm">
                 <Languages className="mb-4 h-8 w-8 text-secondary" />
-                <h3 className="text-xl font-bold text-foreground">Английский без лишних поездок</h3>
-                <p className="mt-3 text-sm leading-6 text-muted-foreground">Те, кто остаётся на продлёнке до 19:00, могут посещать дополнительные занятия по английскому в привычной среде.</p>
+                <h3 className="text-xl font-bold text-foreground">Дополнительные занятия встроены в продлёнку</h3>
+                <p className="mt-3 text-sm leading-6 text-muted-foreground">Английский, эмоциональный интеллект, «Читайка» и творчество проходят в том же здании и входят в обязательную программу.</p>
               </article>
               <article className="rounded-3xl border border-border bg-card p-6 shadow-sm">
                 <MessageCircle className="mb-4 h-8 w-8 text-secondary" />
-                <h3 className="text-xl font-bold text-foreground">Родители не в тумане</h3>
-                <p className="mt-3 text-sm leading-6 text-muted-foreground">Держим родителей в курсе: как прошёл день, что получилось, где нужна поддержка и как ребёнок себя чувствует.</p>
+                <h3 className="text-xl font-bold text-foreground">Обратная связь для вашего спокойствия</h3>
+                <p className="mt-3 text-sm leading-6 text-muted-foreground">Отправляем сообщения, когда ребёнок пришёл или его забрали из школы, сообщаем о том, как проходит день и как он справился с домашкой. Присылаем фотоотчёты.</p>
               </article>
             </div>
           </div>
@@ -272,7 +271,7 @@ export default function ProdlenkaPage() {
                 <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/15">
                   <Presentation className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-2xl font-bold text-foreground">Обязательные занятия всегда включены</h3>
+                <h3 className="text-2xl font-bold text-foreground">Обязательные занятия в программе продлёнки</h3>
                 <ul className="mt-6 space-y-3">
                   {requiredActivities.map((activity) => (
                     <li key={activity} className="flex gap-3 text-sm leading-6 text-foreground">
@@ -303,8 +302,8 @@ export default function ProdlenkaPage() {
         <section className="bg-card py-20 lg:py-28">
           <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-2 lg:px-8">
             <div>
-              <h2 className="text-3xl font-bold text-foreground sm:text-4xl">День собран так, чтобы всем было легче</h2>
-              <p className="mt-4 text-lg leading-8 text-muted-foreground">После уроков детям нужно не ещё больше гонки, а понятный ритм: поесть, выдохнуть, подвигаться, сделать важное и спокойно дождаться родителей.</p>
+              <h2 className="text-3xl font-bold text-foreground sm:text-4xl">День организован с учётом потребностей ребёнка и семьи</h2>
+              <p className="mt-4 text-lg leading-8 text-muted-foreground">После уроков детям нужно переключиться, не бояться оценок и строгих учителей. Мы создаём уютное принимающее пространство, где есть место отдыху, развитию и увлечениям.</p>
               <div className="mt-8 flex flex-wrap gap-3">
                 {formats.map((format) => (
                   <span key={format} className="rounded-full bg-background px-4 py-2 text-sm font-medium text-foreground ring-1 ring-border">{format}</span>

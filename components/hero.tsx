@@ -1,6 +1,5 @@
-import Link from "next/link"
 import Image from "next/image"
-import { Button } from "@/components/ui/button"
+import { ApplicationModalTrigger } from "@/components/application-modal"
 import { OpenDayBanner } from "@/components/open-day-banner"
 import { BookOpen, Users, Clock, Award } from "lucide-react"
 
@@ -52,12 +51,21 @@ export function Hero() {
             </p>
             
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <Button asChild size="lg" className="text-base px-8 bg-secondary hover:bg-secondary/90 text-secondary-foreground">
-                <Link href="#contact">Записаться на знакомство</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="text-base px-8 bg-transparent border-foreground/20 hover:bg-foreground/5">
-                <Link href="#about">Получить презентацию</Link>
-              </Button>
+              <ApplicationModalTrigger
+                intent="intro"
+                size="lg"
+                triggerClassName="text-base px-8 bg-secondary hover:bg-secondary/90 text-secondary-foreground"
+              >
+                Записаться на знакомство
+              </ApplicationModalTrigger>
+              <ApplicationModalTrigger
+                intent="presentation"
+                variant="outline"
+                size="lg"
+                triggerClassName="text-base px-8 bg-transparent border-foreground/20 hover:bg-foreground/5"
+              >
+                Получить презентацию
+              </ApplicationModalTrigger>
             </div>
           </div>
 

@@ -4,6 +4,7 @@ import Image from "next/image"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Contact } from "@/components/contact"
+import { ApplicationModalTrigger } from "@/components/application-modal"
 import { Button } from "@/components/ui/button"
 import { BookOpenCheck, Bus, CheckCircle2, Clock, Download, Gamepad2, GraduationCap, HeartHandshake, Languages, MessageCircle, Palette, Presentation, Puzzle, Sparkles, Utensils, UsersRound } from "lucide-react"
 
@@ -152,9 +153,13 @@ export default function ProdlenkaPage() {
                 Сочетаем тёплую атмосферу, поддержку взрослых, развивающую среду и системную работу — чтобы ребёнку было комфортно учиться, отдыхать и развиваться после школы.
               </p>
               <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-                <Button asChild size="lg" className="bg-secondary px-8 text-base text-secondary-foreground hover:bg-secondary/90">
-                  <Link href="#contact">Получить презентацию</Link>
-                </Button>
+                <ApplicationModalTrigger
+                  intent="presentation"
+                  size="lg"
+                  triggerClassName="bg-secondary px-8 text-base text-secondary-foreground hover:bg-secondary/90"
+                >
+                  Получить презентацию
+                </ApplicationModalTrigger>
                 <Button asChild variant="outline" size="lg" className="bg-white/60 px-8 text-base">
                   <Link href="/prodlenka.pdf" target="_blank">
                     <Download className="mr-2 h-4 w-4" />

@@ -1,8 +1,7 @@
 import Image from "next/image"
-import Link from "next/link"
 import { ArrowRight, Gift } from "lucide-react"
+import { ApplicationModalTrigger } from "@/components/application-modal"
 
-const MATERIALS_URL = "https://max.ru/id753611991489_bot?start=c1775561912493-ds"
 const MAX_URL = "https://max.ru/chita.school"
 const TELEGRAM_URL = "https://t.me/chita_school"
 
@@ -51,15 +50,14 @@ export function OpenDayBanner() {
           </ul>
 
           <div className="mt-6 grid gap-3 sm:flex sm:flex-wrap">
-            <Link
-              href={MATERIALS_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex cursor-pointer items-center justify-center gap-3 rounded-full bg-secondary px-6 py-3 text-base font-semibold text-secondary-foreground shadow-lg shadow-secondary/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-secondary/90 hover:shadow-xl hover:shadow-secondary/30 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-secondary/30"
+            <ApplicationModalTrigger
+              intent="materials"
+              triggerMode="custom"
+              triggerClassName="inline-flex cursor-pointer items-center justify-center gap-3 rounded-full bg-secondary px-6 py-3 text-base font-semibold text-secondary-foreground shadow-lg shadow-secondary/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-secondary/90 hover:shadow-xl hover:shadow-secondary/30 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-secondary/30"
             >
               Получить материалы
               <ArrowRight className="h-5 w-5" aria-hidden="true" />
-            </Link>
+            </ApplicationModalTrigger>
             <a
               href={MAX_URL}
               target="_blank"

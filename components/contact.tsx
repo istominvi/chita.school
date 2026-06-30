@@ -9,8 +9,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Phone, Mail, MapPin } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import { Spinner } from "@/components/ui/spinner"
-
-const ENDPOINT_URL = "https://script.google.com/macros/s/AKfycbxlacIu_g6vR5KVrTVsemviA9pAFJ4zowxJs0zYPBhCcuXoMoW32DJM_d-vudTMNEnV8Q/exec"
+import { APPLICATION_REQUEST_TYPES, isValidPhone, submitApplication } from "@/lib/application"
 
 interface ContactFormData {
   name: string
@@ -29,23 +28,24 @@ export function Contact() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [phoneError, setPhoneError] = useState("")
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+
+    if (!isValidPhone(formData.phone)) {
+      setPhoneError("Введите корректный телефон")
+      return
+    }
+
     setIsSubmitting(true)
     
     try {
-      const response = await fetch(ENDPOINT_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "text/plain;charset=utf-8",
-        },
-        body: JSON.stringify(formData),
+      await submitApplication({
+        ...formData,
+        requestType: APPLICATION_REQUEST_TYPES.intro,
+        source: "Форма в секции «Записаться на знакомство»",
       })
-
-      if (!response.ok) {
-        throw new Error("Network response was not ok")
-      }
 
       toast({
         description: "Заявка успешно отправлена!",
@@ -53,6 +53,7 @@ export function Contact() {
 
       setIsSubmitted(true)
       setFormData({ name: "", phone: "", email: "", message: "" })
+      setPhoneError("")
 
       // Сбросить состояние через 5 секунд
       setTimeout(() => setIsSubmitted(false), 5000)
@@ -105,10 +106,20 @@ export function Contact() {
                   type="tel"
                   required
                   value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  onChange={(e) => {
+                    setFormData({ ...formData, phone: e.target.value })
+                    setPhoneError("")
+                  }}
+                  aria-invalid={Boolean(phoneError)}
+                  aria-describedby={phoneError ? "phone-error" : undefined}
                   className="bg-background"
                   placeholder="+7 (___) ___-__-__"
                 />
+                {phoneError && (
+                  <p id="phone-error" className="mt-2 text-sm text-destructive">
+                    {phoneError}
+                  </p>
+                )}
               </div>
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
@@ -136,7 +147,7 @@ export function Contact() {
                   placeholder="Расскажите о вашем ребенке или задайте вопрос"
                 />
               </div>
-              <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
+              <Button type="submit" size="lg" className="w-full" disabled={isSubmitting || isSubmitted}>
                 {isSubmitting ? (
                   <>
                     <Spinner className="mr-2 h-4 w-4" />

@@ -6,6 +6,7 @@ import Image from "next/image"
 import { Menu, X } from "lucide-react"
 import { createPortal } from "react-dom"
 import { Button } from "@/components/ui/button"
+import { ApplicationModal } from "@/components/application-modal"
 
 const prodlenkaNavigationItem = { name: "Продлёнка", href: "/prodlenka" }
 
@@ -19,6 +20,7 @@ const navigation = [
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [introModalOpen, setIntroModalOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
@@ -78,8 +80,8 @@ export function Header() {
           >
             {prodlenkaNavigationItem.name}
           </Link>
-          <Button asChild>
-            <Link href="/#contact">Записаться</Link>
+          <Button type="button" onClick={() => setIntroModalOpen(true)}>
+            Записаться
           </Button>
         </div>
       </nav>
@@ -141,10 +143,15 @@ export function Header() {
                   ))}
                 </div>
                 <div className="py-6">
-                  <Button asChild className="w-full">
-                    <Link href="/#contact" onClick={() => setMobileMenuOpen(false)}>
-                      Записаться на знакомство
-                    </Link>
+                  <Button
+                    type="button"
+                    className="w-full"
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      setIntroModalOpen(true)
+                    }}
+                  >
+                    Записаться на знакомство
                   </Button>
                 </div>
               </div>
@@ -153,6 +160,8 @@ export function Header() {
         </div>,
         document.body
       )}
+
+      <ApplicationModal intent="intro" open={introModalOpen} onOpenChange={setIntroModalOpen} />
     </header>
   )
 }

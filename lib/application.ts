@@ -4,6 +4,7 @@ export const APPLICATION_REQUEST_TYPES = {
   intro: "Пользователь хочет записаться на знакомство",
   presentation: "Пользователь хочет получить презентацию",
   materials: "Пользователь хочет получить материалы",
+  openDay: "Пользователь хочет записаться на день открытых дверей 19 августа в 18:00",
 } as const
 
 export type ApplicationIntent = keyof typeof APPLICATION_REQUEST_TYPES

@@ -1,14 +1,11 @@
 import Image from "next/image"
-import { ArrowRight, Gift } from "lucide-react"
+import { ArrowRight, CalendarDays, Sparkles } from "lucide-react"
 import { ApplicationModalTrigger } from "@/components/application-modal"
-
-const MAX_URL = "https://max.ru/chita.school"
-const TELEGRAM_URL = "https://t.me/chita_school"
 
 export function OpenDayBanner() {
   return (
     <section
-      className="relative overflow-hidden rounded-[2rem] border border-primary/20 bg-[radial-gradient(circle_at_88%_12%,rgba(138,206,217,0.42),transparent_28%),linear-gradient(115deg,#fffdf8_0%,#f8fcff_48%,#eef9fb_100%)] p-6 shadow-xl shadow-primary/10 sm:p-8 lg:min-h-[260px] lg:p-10"
+      className="relative overflow-hidden rounded-[2rem] border border-primary/20 bg-[radial-gradient(circle_at_88%_12%,rgba(138,206,217,0.42),transparent_28%),linear-gradient(115deg,#fffdf8_0%,#f8fcff_48%,#eef9fb_100%)] p-6 shadow-xl shadow-primary/10 sm:p-8 lg:p-10"
       aria-labelledby="open-day-title"
     >
       <div className="absolute -left-10 bottom-4 h-24 w-24 rounded-full bg-secondary/25 blur-2xl" aria-hidden="true" />
@@ -19,78 +16,59 @@ export function OpenDayBanner() {
         ))}
       </div>
 
-      <div className="relative z-10 grid items-center gap-8 md:grid-cols-[minmax(0,1fr)_minmax(260px,38%)] lg:grid-cols-[minmax(0,1fr)_minmax(360px,42%)]">
+      <div className="relative z-10 grid items-center gap-8 md:grid-cols-[minmax(0,1fr)_minmax(260px,38%)] lg:grid-cols-[minmax(0,1fr)_minmax(380px,43%)] lg:gap-12">
         <div className="max-w-2xl">
-          <p className="mb-3 inline-flex rounded-full bg-primary/15 px-4 py-2 text-sm font-semibold text-foreground shadow-sm ring-1 ring-primary/20">
-            Полезные материалы для родителей
+          <p className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/15 px-4 py-2 text-sm font-semibold text-foreground shadow-sm ring-1 ring-primary/20">
+            <CalendarDays className="h-4 w-4 text-secondary" aria-hidden="true" />
+            19 августа · 18:00
           </p>
           <h2
             id="open-day-title"
             className="text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl"
           >
-            Дарим три полезных документа
+            День открытых дверей
           </h2>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Помогаем понять, готов ли ребенок к школе, что он чувствует перед школой и стоит ли обратить внимание на частые ошибки при письме.
+            Приглашаем детей от 6 до 9 лет и родителей.
           </p>
 
-          <ul className="mt-5 grid gap-3 text-base font-medium text-foreground sm:text-lg">
+          <p className="mt-5 text-base font-semibold text-foreground sm:text-lg">Вас ждут:</p>
+          <ul className="mt-3 grid gap-3 text-base font-medium text-foreground sm:text-lg">
             <li className="flex gap-3">
-              <Gift className="mt-1 h-5 w-5 shrink-0 text-secondary" aria-hidden="true" />
-              <span>Чек-лист готовности к первому классу (требования ФГОС, госшколы).</span>
+              <Sparkles className="mt-1 h-5 w-5 shrink-0 text-secondary" aria-hidden="true" />
+              <span>Знакомство со школой и экскурсия.</span>
             </li>
             <li className="flex gap-3">
-              <Gift className="mt-1 h-5 w-5 shrink-0 text-secondary" aria-hidden="true" />
-              <span>Тест, что ребёнок чувствует перед школой.</span>
+              <Sparkles className="mt-1 h-5 w-5 shrink-0 text-secondary" aria-hidden="true" />
+              <span>Интерактивные уроки и мастер-классы.</span>
             </li>
             <li className="flex gap-3">
-              <Gift className="mt-1 h-5 w-5 shrink-0 text-secondary" aria-hidden="true" />
-              <span>Тест на дисграфию.</span>
+              <Sparkles className="mt-1 h-5 w-5 shrink-0 text-secondary" aria-hidden="true" />
+              <span>Розыгрыш подарков для участников.</span>
             </li>
           </ul>
 
-          <div className="mt-6 grid gap-3 sm:flex sm:flex-wrap">
+          <div className="mt-6">
+            <p className="mb-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+              Узнайте подробности и забронируйте место на встрече.
+            </p>
             <ApplicationModalTrigger
-              intent="materials"
+              intent="openDay"
               triggerMode="custom"
-              triggerClassName="inline-flex cursor-pointer items-center justify-center gap-3 rounded-full bg-secondary px-6 py-3 text-base font-semibold text-secondary-foreground shadow-lg shadow-secondary/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-secondary/90 hover:shadow-xl hover:shadow-secondary/30 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-secondary/30"
+              triggerClassName="inline-flex w-full cursor-pointer items-center justify-center gap-3 rounded-full bg-secondary px-6 py-3 text-base font-semibold text-secondary-foreground shadow-lg shadow-secondary/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-secondary/90 hover:shadow-xl hover:shadow-secondary/30 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-secondary/30 sm:w-auto"
             >
-              Получить материалы
+              Записаться
               <ArrowRight className="h-5 w-5" aria-hidden="true" />
             </ApplicationModalTrigger>
-            <a
-              href={MAX_URL}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Открыть сообщество школы в MAX"
-              className="inline-flex cursor-pointer items-center justify-center gap-3 rounded-full bg-white/90 px-5 py-3 text-base font-semibold text-foreground shadow-md ring-1 ring-foreground/10 transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:shadow-lg focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/30"
-            >
-              <span className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-xl shadow-sm" aria-hidden="true">
-                <img src="/MAX.svg" alt="" className="h-full w-full object-contain" />
-              </span>
-              MAX
-            </a>
-            <a
-              href={TELEGRAM_URL}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Открыть Telegram школы"
-              className="inline-flex cursor-pointer items-center justify-center gap-3 rounded-full bg-white/90 px-5 py-3 text-base font-semibold text-foreground shadow-md ring-1 ring-foreground/10 transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:shadow-lg focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-400/30"
-            >
-              <span className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full shadow-sm" aria-hidden="true">
-                <img src="/Telegram.svg" alt="" className="h-full w-full object-contain" />
-              </span>
-              Telegram
-            </a>
           </div>
         </div>
 
-        <div className="relative min-h-[210px] md:min-h-[235px] lg:min-h-[260px]">
+        <div className="relative min-h-[230px] sm:min-h-[300px] md:min-h-[340px] lg:min-h-[390px]">
           <div className="absolute inset-0 translate-x-4 rounded-[2rem] bg-primary/15 blur-2xl" aria-hidden="true" />
-          <div className="relative h-full min-h-[210px] overflow-hidden rounded-[1.75rem] border-8 border-white bg-muted shadow-2xl md:min-h-[235px] lg:min-h-[260px] lg:[clip-path:ellipse(76%_68%_at_54%_50%)]">
+          <div className="relative h-full min-h-[230px] overflow-hidden rounded-[1.75rem] border-8 border-white bg-muted shadow-2xl sm:min-h-[300px] md:min-h-[340px] lg:min-h-[390px] lg:[clip-path:ellipse(76%_68%_at_54%_50%)]">
             <Image
               src="/photos/dayofopendoors.png"
-              alt="Дарим три полезных документа в Евразийской начальной школе"
+              alt="День открытых дверей в Евразийской начальной школе"
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1280px) 38vw, 520px"
               className="object-cover object-[56%_52%]"

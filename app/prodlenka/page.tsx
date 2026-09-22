@@ -14,6 +14,11 @@ export const metadata: Metadata = {
     "Группа продлённого дня для 1–2 классов в Северном микрорайоне Читы: домашние задания, прогулки, питание, творчество и спокойный вечер до 19:00.",
 }
 
+const prices = [
+  { grade: "1 класс", price: "17 600" },
+  { grade: "2 класс", price: "22 000" },
+]
+
 const benefits = [
   {
     icon: BookOpenCheck,
@@ -363,6 +368,30 @@ export default function ProdlenkaPage() {
                   <p className="mt-2 text-sm leading-6 text-muted-foreground">Отвечает за стабильность, режим, тёплую атмосферу и спокойное течение дня на продлёнке.</p>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="price" className="pb-20 lg:pb-28">
+          <div className="mx-auto max-w-5xl px-6 lg:px-8">
+            <div className="text-center">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">стоимость</p>
+              <h2 className="mt-3 text-3xl font-bold text-foreground sm:text-4xl">Сколько стоит продлёнка</h2>
+            </div>
+            <div className="mt-10 grid gap-6 sm:grid-cols-2">
+              {prices.map((item) => (
+                <div key={item.grade} className="rounded-[2rem] border border-border bg-card p-8 shadow-sm">
+                  <h3 className="text-2xl font-bold text-foreground">{item.grade}</h3>
+                  <p className="mt-4 flex flex-wrap items-baseline gap-x-2">
+                    <span className="text-4xl font-bold text-foreground lg:text-5xl">{item.price}</span>
+                    <span className="text-muted-foreground">руб./месяц</span>
+                  </p>
+                  <p className="mt-6 flex items-center gap-3 rounded-2xl bg-amber-100 px-4 py-3 text-sm font-medium text-amber-900">
+                    <Utensils className="h-5 w-5 shrink-0" aria-hidden="true" />
+                    Питание оплачивается отдельно
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </section>

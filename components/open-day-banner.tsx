@@ -20,31 +20,28 @@ export function OpenDayBanner() {
         <div className="max-w-2xl">
           <p className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/15 px-4 py-2 text-sm font-semibold text-foreground shadow-sm ring-1 ring-primary/20">
             <CalendarDays className="h-4 w-4 text-secondary" aria-hidden="true" />
-            19 августа · 18:00
+            26 сентября · 10:00
           </p>
           <h2
             id="open-day-title"
-            className="text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl"
+            className="text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl"
           >
-            День открытых дверей
+            День знакомства с группой продлённого дня в Евразийской школе
           </h2>
-          <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Приглашаем детей от 6 до 9 лет и родителей.
-          </p>
 
           <p className="mt-5 text-base font-semibold text-foreground sm:text-lg">Вас ждут:</p>
           <ul className="mt-3 grid gap-3 text-base font-medium text-foreground sm:text-lg">
             <li className="flex gap-3">
               <Sparkles className="mt-1 h-5 w-5 shrink-0 text-secondary" aria-hidden="true" />
-              <span>Знакомство со школой и экскурсия.</span>
+              <span>Экскурсия по школе и знакомство с педагогами.</span>
             </li>
             <li className="flex gap-3">
               <Sparkles className="mt-1 h-5 w-5 shrink-0 text-secondary" aria-hidden="true" />
-              <span>Интерактивные уроки и мастер-классы.</span>
+              <span>Интерактивное собрание для родителей.</span>
             </li>
             <li className="flex gap-3">
               <Sparkles className="mt-1 h-5 w-5 shrink-0 text-secondary" aria-hidden="true" />
-              <span>Розыгрыш подарков для участников.</span>
+              <span>Мастер-класс по английскому языку для детей.</span>
             </li>
           </ul>
 
@@ -68,7 +65,7 @@ export function OpenDayBanner() {
           <div className="relative h-full min-h-[230px] overflow-hidden rounded-[1.75rem] border-8 border-white bg-muted shadow-2xl sm:min-h-[300px] md:min-h-[340px] lg:min-h-[390px] lg:[clip-path:ellipse(76%_68%_at_54%_50%)]">
             <Image
               src="/photos/dayofopendoors.png"
-              alt="День открытых дверей в Евразийской начальной школе"
+              alt="День знакомства с группой продлённого дня в Евразийской школе"
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1280px) 38vw, 520px"
               className="object-cover object-[56%_52%]"

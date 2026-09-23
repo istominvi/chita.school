@@ -32,6 +32,11 @@ const MODAL_COPY: Record<ApplicationIntent, { title: string; description: string
     description: "Оставьте контакты, и менеджер подскажет, как получить полезные материалы для родителей.",
     source: "Кнопка «Получить материалы»",
   },
+  prep: {
+    title: "Записаться на диагностику",
+    description: "Оставьте контакты, и педагог пригласит ребёнка на диагностику и поможет выбрать группу подготовки к школе.",
+    source: "Кнопка записи на странице подготовки к школе",
+  },
   openDay: {
     title: "Записаться на день знакомства с продлёнкой",
     description: "Оставьте контакты, и менеджер свяжется с вами, чтобы подтвердить запись на 26 сентября в 10:00.",
@@ -69,6 +74,7 @@ interface ApplicationModalProps {
 
 interface ApplicationModalTriggerProps {
   intent: ApplicationIntent
+  sourceDetail?: string
   children: React.ReactNode
   triggerClassName?: string
   triggerMode?: "button" | "custom"
@@ -86,6 +92,7 @@ export function ApplicationModal({ intent, open, onOpenChange }: ApplicationModa
 
 export function ApplicationModalTrigger({
   intent,
+  sourceDetail,
   children,
   triggerClassName,
   triggerMode = "button",
@@ -107,7 +114,7 @@ export function ApplicationModalTrigger({
           </Button>
         )}
       </DialogTrigger>
-      <ApplicationModalContent intent={intent} open={open} />
+      <ApplicationModalContent intent={intent} sourceDetail={sourceDetail} open={open} />
     </Dialog>
   )
 }
@@ -138,9 +145,10 @@ function getPhoneDigitIndex(caretPosition: number) {
   return PHONE_DIGIT_SLOTS.filter((slot) => slot < caretPosition).length
 }
 
-function ApplicationModalContent({ intent, open }: { intent: ApplicationIntent; open: boolean }) {
+function ApplicationModalContent({ intent, sourceDetail, open }: { intent: ApplicationIntent; sourceDetail?: string; open: boolean }) {
   const formId = useId()
-  const { title, description, source } = MODAL_COPY[intent]
+  const { title, description, source: baseSource } = MODAL_COPY[intent]
+  const source = sourceDetail ? `${baseSource} — ${sourceDetail}` : baseSource
   const [formData, setFormData] = useState<ModalFormData>(INITIAL_FORM_DATA)
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({})
   const [formError, setFormError] = useState("")

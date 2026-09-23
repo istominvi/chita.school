@@ -8,7 +8,10 @@ import { createPortal } from "react-dom"
 import { Button } from "@/components/ui/button"
 import { ApplicationModal } from "@/components/application-modal"
 
-const prodlenkaNavigationItem = { name: "Продлёнка", href: "/prodlenka" }
+const pageNavigationItems = [
+  { name: "Продлёнка", href: "/prodlenka" },
+  { name: "Подготовка", href: "/podgotovka" },
+]
 
 const navigation = [
   { name: "О школе", href: "/#about" },
@@ -30,7 +33,7 @@ export function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 lg:px-8">
-        <div className="flex lg:flex-1">
+        <div className="flex xl:flex-1">
           <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-3">
             <Image
               src="/images/logo.png"
@@ -50,7 +53,7 @@ export function Header() {
           </Link>
         </div>
         
-        <div className="flex lg:hidden">
+        <div className="flex xl:hidden">
           <button
             type="button"
             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-foreground"
@@ -61,7 +64,7 @@ export function Header() {
           </button>
         </div>
         
-        <div className="hidden lg:flex lg:gap-x-8">
+        <div className="hidden xl:flex xl:gap-x-6">
           {navigation.map((item) => (
             <Link
               key={item.name}
@@ -73,13 +76,16 @@ export function Header() {
           ))}
         </div>
         
-        <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:gap-3">
-          <Link
-            href={prodlenkaNavigationItem.href}
-            className="rounded-full bg-amber-300 px-4 py-2 text-sm font-extrabold text-amber-950 shadow-sm ring-1 ring-amber-400/60 transition hover:-translate-y-0.5 hover:bg-amber-200 hover:shadow-md"
-          >
-            {prodlenkaNavigationItem.name}
-          </Link>
+        <div className="hidden xl:flex xl:flex-1 xl:items-center xl:justify-end xl:gap-3">
+          {pageNavigationItems.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className="rounded-full bg-amber-300 px-4 py-2 text-sm font-extrabold text-amber-950 shadow-sm ring-1 ring-amber-400/60 transition hover:-translate-y-0.5 hover:bg-amber-200 hover:shadow-md"
+            >
+              {item.name}
+            </Link>
+          ))}
           <Button type="button" onClick={() => setIntroModalOpen(true)}>
             Записаться
           </Button>
@@ -88,7 +94,7 @@ export function Header() {
 
       {/* Mobile menu */}
       {isMounted && mobileMenuOpen && createPortal(
-        <div className="lg:hidden fixed inset-0 z-[100]">
+        <div className="xl:hidden fixed inset-0 z-[100]">
           <div 
             className="fixed inset-0 bg-foreground/20 backdrop-blur-sm" 
             onClick={() => setMobileMenuOpen(false)} 
@@ -124,13 +130,16 @@ export function Header() {
             <div className="mt-6 flow-root">
               <div className="-my-6 divide-y divide-border">
                 <div className="space-y-2 py-6">
-                  <Link
-                    href={prodlenkaNavigationItem.href}
-                    className="-mx-3 block rounded-lg bg-amber-300 px-3 py-2 text-base font-extrabold text-amber-950 shadow-sm"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {prodlenkaNavigationItem.name}
-                  </Link>
+                  {pageNavigationItems.map((item) => (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className="-mx-3 block rounded-lg bg-amber-300 px-3 py-2 text-base font-extrabold text-amber-950 shadow-sm"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
                   {navigation.map((item) => (
                     <Link
                       key={item.name}

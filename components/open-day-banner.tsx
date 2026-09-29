@@ -20,7 +20,7 @@ export function OpenDayBanner() {
         <div className="max-w-2xl">
           <p className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary/15 px-4 py-2 text-sm font-semibold text-foreground shadow-sm ring-1 ring-primary/20">
             <CalendarDays className="h-4 w-4 text-secondary" aria-hidden="true" />
-            26 сентября · 10:00
+            3 октября · 10:00
           </p>
           <h2
             id="open-day-title"

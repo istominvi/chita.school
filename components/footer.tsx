@@ -8,6 +8,7 @@ const navigation = {
     { name: "Стоимость", href: "#pricing" },
     { name: "Вопросы", href: "#faq" },
     { name: "Контакты", href: "#contact" },
+    { name: "Персональные данные", href: "/privacy" },
   ],
 }
 

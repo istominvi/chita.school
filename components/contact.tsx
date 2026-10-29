@@ -9,13 +9,16 @@ import { Textarea } from "@/components/ui/textarea"
 import { Phone, Mail, MapPin } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import { Spinner } from "@/components/ui/spinner"
-import { APPLICATION_REQUEST_TYPES, isValidPhone, submitApplication } from "@/lib/application"
+import { APPLICATION_REQUEST_TYPES, APPLICATION_SOURCES, isValidPhone, submitApplication } from "@/lib/application"
+import { CONSENT_ERROR } from "@/lib/consent"
+import { ConsentCheckbox } from "@/components/consent-checkbox"
 
 interface ContactFormData {
   name: string
   phone: string
   email: string
   message: string
+  consent: boolean
 }
 
 export function Contact() {
@@ -25,10 +28,12 @@ export function Contact() {
     phone: "",
     email: "",
     message: "",
+    consent: false,
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [phoneError, setPhoneError] = useState("")
+  const [consentError, setConsentError] = useState("")
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -38,13 +43,22 @@ export function Contact() {
       return
     }
 
+    if (!formData.consent) {
+      setConsentError(CONSENT_ERROR)
+      return
+    }
+
     setIsSubmitting(true)
     
     try {
       await submitApplication({
-        ...formData,
+        name: formData.name,
+        phone: formData.phone,
+        email: formData.email,
+        message: formData.message,
         requestType: APPLICATION_REQUEST_TYPES.intro,
-        source: "Форма в секции «Записаться на знакомство»",
+        sourceCode: APPLICATION_SOURCES.contact,
+        trigger: "Форма в секции «Записаться на знакомство»",
       })
 
       toast({
@@ -52,8 +66,9 @@ export function Contact() {
       })
 
       setIsSubmitted(true)
-      setFormData({ name: "", phone: "", email: "", message: "" })
+      setFormData({ name: "", phone: "", email: "", message: "", consent: false })
       setPhoneError("")
+      setConsentError("")
 
       // Сбросить состояние через 5 секунд
       setTimeout(() => setIsSubmitted(false), 5000)
@@ -147,6 +162,15 @@ export function Contact() {
                   placeholder="Расскажите о вашем ребенке или задайте вопрос"
                 />
               </div>
+              <ConsentCheckbox
+                id="contact-consent"
+                checked={formData.consent}
+                onCheckedChange={(checked) => {
+                  setFormData({ ...formData, consent: checked })
+                  setConsentError("")
+                }}
+                error={consentError}
+              />
               <Button type="submit" size="lg" className="w-full" disabled={isSubmitting || isSubmitted}>
                 {isSubmitting ? (
                   <>

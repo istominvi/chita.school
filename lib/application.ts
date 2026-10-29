@@ -1,4 +1,18 @@
-const ENDPOINT_URL = "https://script.google.com/macros/s/AKfycbxlacIu_g6vR5KVrTVsemviA9pAFJ4zowxJs0zYPBhCcuXoMoW32DJM_d-vudTMNEnV8Q/exec"
+import { CONSENT_VERSION } from "@/lib/consent"
+
+// Заявки уходят напрямую в AlfaCRM: серверы в РФ (Selectel, ЦОД «Дубровка-3»),
+// это требование ч. 5 ст. 18 152-ФЗ. Токен — md5 от номера филиала, он виден
+// в адресе и не является секретом, поэтому при static export держим его тут же.
+const ALFACRM_LEAD_URL =
+  "https://helendoronchita.s20.online/api/7/lead/create?token=8f14e45fceea167a5a36dedd4bea2543"
+
+// Короткие коды источников — так лиды группируются в AlfaCRM.
+export const APPLICATION_SOURCES = {
+  intro: "site-intro",
+  contact: "site-contact",
+} as const
+
+export type ApplicationSource = (typeof APPLICATION_SOURCES)[keyof typeof APPLICATION_SOURCES]
 
 export const APPLICATION_REQUEST_TYPES = {
   intro: "Пользователь хочет записаться на знакомство",
@@ -11,15 +25,19 @@ export const APPLICATION_REQUEST_TYPES = {
 export type ApplicationIntent = keyof typeof APPLICATION_REQUEST_TYPES
 
 export interface ApplicationPayload {
+  /** ФИО родителя — уходит в поле `name` AlfaCRM. */
   name: string
   phone: string
   email?: string
-  message?: string
-  requestType?: string
-  firstName?: string
-  lastName?: string
+  /** Отдельного поля для ребёнка в AlfaCRM нет, кладём в `note`. */
   childName?: string
-  source?: string
+  /** Текст от посетителя, тоже в `note`. */
+  message?: string
+  /** Короткий код источника для поля `source`. */
+  sourceCode: ApplicationSource
+  /** Человекочитаемо: с какой кнопки пришла заявка. Уходит в `note`. */
+  trigger?: string
+  requestType?: string
 }
 
 export function isValidPhone(phone: string) {
@@ -32,42 +50,51 @@ export function isValidPhone(phone: string) {
   return digits.length === 11 && /^[78]/.test(digits)
 }
 
-export async function submitApplication(data: ApplicationPayload) {
-  const requestType = data.requestType?.trim()
-  const source = data.source?.trim()
-  const childName = data.childName?.trim()
-  const userMessage = data.message?.trim()
-
-  const message = [
-    source ? `Источник: ${source}` : "",
-    childName ? `Имя ребенка: ${childName}` : "",
-    userMessage,
+function buildNote(data: ApplicationPayload) {
+  return [
+    data.requestType?.trim(),
+    data.trigger?.trim() ? `Откуда заявка: ${data.trigger.trim()}` : "",
+    data.childName?.trim() ? `Имя ребёнка: ${data.childName.trim()}` : "",
+    data.message?.trim(),
+    `Согласие на обработку персональных данных: получено на сайте, редакция текста ${CONSENT_VERSION}`,
   ]
     .filter(Boolean)
     .join("\n")
+}
 
-  const payload = {
-    ...data,
+export async function submitApplication(data: ApplicationPayload) {
+  const body = new URLSearchParams({
     name: data.name.trim(),
     phone: data.phone.trim(),
     email: data.email?.trim() ?? "",
-    message,
-    requestType,
-    firstName: data.firstName?.trim(),
-    lastName: data.lastName?.trim(),
-    childName,
-    source,
-  }
+    source: data.sourceCode,
+    note: buildNote(data),
+  })
 
-  const response = await fetch(ENDPOINT_URL, {
+  const response = await fetch(ALFACRM_LEAD_URL, {
     method: "POST",
     headers: {
-      "Content-Type": "text/plain;charset=utf-8",
+      // Safelisted-тип, поэтому CORS-preflight не нужен.
+      "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
     },
-    body: JSON.stringify(payload),
+    body: body.toString(),
   })
 
   if (!response.ok) {
-    throw new Error("Network response was not ok")
+    throw new Error(`AlfaCRM responded with HTTP ${response.status}`)
+  }
+
+  // AlfaCRM умеет ответить 200 с `result: false` — успехом считаем только `true`.
+  const raw = await response.text()
+  let parsed: unknown
+
+  try {
+    parsed = JSON.parse(raw)
+  } catch {
+    throw new Error("AlfaCRM returned a non-JSON response")
+  }
+
+  if ((parsed as { result?: unknown } | null)?.result !== true) {
+    throw new Error("AlfaCRM did not confirm the lead")
   }
 }

@@ -3,7 +3,15 @@
 import React, { useEffect, useId, useLayoutEffect, useRef, useState } from "react"
 import { Send } from "lucide-react"
 
-import { APPLICATION_REQUEST_TYPES, type ApplicationIntent, isValidPhone, submitApplication } from "@/lib/application"
+import {
+  APPLICATION_REQUEST_TYPES,
+  APPLICATION_SOURCES,
+  type ApplicationIntent,
+  isValidPhone,
+  submitApplication,
+} from "@/lib/application"
+import { CONSENT_ERROR } from "@/lib/consent"
+import { ConsentCheckbox } from "@/components/consent-checkbox"
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -54,6 +62,7 @@ interface ModalFormData {
   lastName: string
   childName: string
   phone: string
+  consent: boolean
 }
 
 type FieldErrors = Partial<Record<keyof ModalFormData, string>>
@@ -64,6 +73,7 @@ const INITIAL_FORM_DATA: ModalFormData = {
   lastName: "",
   childName: "",
   phone: PHONE_MASK,
+  consent: false,
 }
 
 interface ApplicationModalProps {
@@ -215,6 +225,10 @@ function ApplicationModalContent({ intent, sourceDetail, open }: { intent: Appli
       nextErrors.phone = "Введите корректный телефон"
     }
 
+    if (!formData.consent) {
+      nextErrors.consent = CONSENT_ERROR
+    }
+
     setFieldErrors(nextErrors)
 
     return Object.keys(nextErrors).length === 0
@@ -236,12 +250,11 @@ function ApplicationModalContent({ intent, sourceDetail, open }: { intent: Appli
 
       await submitApplication({
         name: `${firstName} ${lastName}`,
-        firstName,
-        lastName,
         childName: formData.childName,
         phone: formData.phone,
         requestType: APPLICATION_REQUEST_TYPES[intent],
-        source,
+        sourceCode: APPLICATION_SOURCES.intro,
+        trigger: source,
       })
 
       setFormData(INITIAL_FORM_DATA)
@@ -262,7 +275,13 @@ function ApplicationModalContent({ intent, sourceDetail, open }: { intent: Appli
     }
   }
 
-  const updateField = (field: keyof Omit<ModalFormData, "phone">, value: string) => {
+  const updateConsent = (checked: boolean) => {
+    setFormData((current) => ({ ...current, consent: checked }))
+    setFieldErrors((current) => ({ ...current, consent: undefined }))
+    setFormError("")
+  }
+
+  const updateField = (field: keyof Omit<ModalFormData, "phone" | "consent">, value: string) => {
     setFormData((current) => ({ ...current, [field]: value }))
     setFieldErrors((current) => ({ ...current, [field]: undefined }))
     setFormError("")
@@ -497,6 +516,13 @@ function ApplicationModalContent({ intent, sourceDetail, open }: { intent: Appli
             </p>
           )}
         </div>
+
+        <ConsentCheckbox
+          id={`${formId}-consent`}
+          checked={formData.consent}
+          onCheckedChange={updateConsent}
+          error={fieldErrors.consent}
+        />
 
         {formError && (
           <p className="rounded-md border border-destructive/25 bg-destructive/10 px-3 py-2 text-sm text-destructive">

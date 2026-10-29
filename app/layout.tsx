@@ -4,6 +4,7 @@ import { Cormorant_Garamond, Inter } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
 import { Toaster } from "@/components/ui/toaster"
+import { AnalyticsNotice } from "@/components/analytics-notice"
 
 const cormorant = Cormorant_Garamond({ 
   subsets: ["latin", "cyrillic"],
@@ -84,6 +85,7 @@ export default function RootLayout({
           </div>
         </noscript>
         {children}
+        <AnalyticsNotice />
         <Toaster />
       </body>
     </html>

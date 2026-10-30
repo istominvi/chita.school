@@ -97,7 +97,8 @@ export function Contact() {
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 max-w-5xl mx-auto">
           <div>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            {/* ym-hide-content: данные заявки не должны попасть в запись Вебвизора. */}
+            <form onSubmit={handleSubmit} className="ym-hide-content space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
                   Ваше имя

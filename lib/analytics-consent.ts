@@ -7,7 +7,7 @@ export const ANALYTICS_CONSENT_VERSION = "2026-10-30"
 // Решение пользователя меняется в баннере, а читает его компонент Метрики —
 // связываем их через событие на window, чтобы не тащить общий стор.
 export const ANALYTICS_CONSENT_EVENT = "chita-school:analytics-consent-changed"
-// Ссылка «Настройки cookie» в подвале открывает баннер заново (постоянный отзыв).
+// Кнопка «Настройки аналитики» открывает панель настроек (постоянный отзыв).
 export const ANALYTICS_SETTINGS_EVENT = "chita-school:analytics-settings"
 
 export type AnalyticsConsent = "granted" | "denied" | null
@@ -47,6 +47,39 @@ export function writeAnalyticsConsent(value: "granted" | "denied") {
   window.dispatchEvent(new CustomEvent(ANALYTICS_CONSENT_EVENT, { detail: value }))
 }
 
-export function openAnalyticsSettings() {
-  window.dispatchEvent(new Event(ANALYTICS_SETTINGS_EVENT))
+// trigger нужен, чтобы вернуть на него focus при закрытии: Safari не ставит focus
+// на кнопку по клику, поэтому document.activeElement здесь ненадёжен.
+export function openAnalyticsSettings(trigger: HTMLElement) {
+  window.dispatchEvent(new CustomEvent(ANALYTICS_SETTINGS_EVENT, { detail: trigger }))
+}
+
+// Убирает следы Метрики из браузера. Вызываем при каждой загрузке без согласия, а не
+// только в момент отзыва: работающий счётчик может записать cookie заново до перезагрузки,
+// и заодно так исчезают cookie, оставшиеся с тех пор, когда Метрика работала без согласия.
+export function clearAnalyticsStorage() {
+  const hostParts = window.location.hostname.split(".")
+  // Метрика ставит cookie на корневой домен, поэтому перебираем хост и его родителей.
+  const domains = ["", ...hostParts.map((_, index) => `; domain=.${hostParts.slice(index).join(".")}`)]
+
+  for (const cookie of document.cookie.split("; ")) {
+    const name = cookie.split("=")[0]
+
+    if (name.startsWith("_ym")) {
+      for (const domain of domains) {
+        document.cookie = `${name}=; path=/; max-age=0${domain}`
+      }
+    }
+  }
+
+  try {
+    for (const storage of [window.localStorage, window.sessionStorage]) {
+      for (const key of Object.keys(storage)) {
+        if (key.startsWith("_ym")) {
+          storage.removeItem(key)
+        }
+      }
+    }
+  } catch {
+    // Хранилище заблокировано: значит, и Метрике там нечего было оставить.
+  }
 }

@@ -416,7 +416,8 @@ function ApplicationModalContent({ intent, sourceDetail, open }: { intent: Appli
         </DialogDescription>
       </DialogHeader>
 
-      <form onSubmit={handleSubmit} className="grid gap-5">
+      {/* ym-hide-content: данные заявки не должны попасть в запись Вебвизора. */}
+      <form onSubmit={handleSubmit} className="ym-hide-content grid gap-5">
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
             <label htmlFor={`${formId}-first-name`} className="mb-2 block text-sm font-medium text-foreground">

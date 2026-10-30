@@ -1,5 +1,7 @@
 import Link from "next/link"
 
+import { CookieSettingsButton } from "@/components/cookie-settings-button"
+
 const navigation = {
   main: [
     { name: "О школе", href: "#about" },
@@ -8,7 +10,8 @@ const navigation = {
     { name: "Стоимость", href: "#pricing" },
     { name: "Вопросы", href: "#faq" },
     { name: "Контакты", href: "#contact" },
-    { name: "Персональные данные", href: "/privacy" },
+    { name: "Политика обработки данных", href: "/privacy" },
+    { name: "Согласие на обработку данных", href: "/consent" },
   ],
 }
 
@@ -30,6 +33,7 @@ export function Footer() {
                 {item.name}
               </Link>
             ))}
+            <CookieSettingsButton className="text-sm text-muted-foreground transition-colors hover:text-foreground" />
           </nav>
         </div>
       </div>

@@ -5,9 +5,11 @@ import Link from "next/link"
 
 import { Checkbox } from "@/components/ui/checkbox"
 import {
-  CONSENT_LINK_TEXT,
-  CONSENT_TEXT_AFTER_LINK,
-  CONSENT_TEXT_BEFORE_LINK,
+  CONSENT_LABEL_AFTER,
+  CONSENT_LABEL_BEFORE,
+  CONSENT_LABEL_MIDDLE,
+  CONSENT_LINK_CONSENT,
+  CONSENT_LINK_POLICY,
 } from "@/lib/consent"
 
 interface ConsentCheckboxProps {
@@ -32,11 +34,15 @@ export function ConsentCheckbox({ id, checked, onCheckedChange, error }: Consent
           className="mt-0.5"
         />
         <label htmlFor={id} className="text-sm leading-5 text-muted-foreground">
-          {CONSENT_TEXT_BEFORE_LINK}
-          <Link href="/privacy" target="_blank" className="text-primary underline underline-offset-2">
-            {CONSENT_LINK_TEXT}
+          {CONSENT_LABEL_BEFORE}
+          <Link href="/consent" target="_blank" className="text-primary underline underline-offset-2">
+            {CONSENT_LINK_CONSENT}
           </Link>
-          {CONSENT_TEXT_AFTER_LINK}
+          {CONSENT_LABEL_MIDDLE}
+          <Link href="/privacy" target="_blank" className="text-primary underline underline-offset-2">
+            {CONSENT_LINK_POLICY}
+          </Link>
+          {CONSENT_LABEL_AFTER}
         </label>
       </div>
       {error && (

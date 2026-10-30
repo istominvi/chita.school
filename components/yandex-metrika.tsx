@@ -5,6 +5,7 @@ import Script from "next/script"
 
 import {
   ANALYTICS_CONSENT_EVENT,
+  clearAnalyticsStorage,
   readAnalyticsConsent,
 } from "@/lib/analytics-consent"
 
@@ -16,7 +17,13 @@ export function YandexMetrika() {
   const [isAllowed, setIsAllowed] = useState(false)
 
   useEffect(() => {
-    setIsAllowed(readAnalyticsConsent() === "granted")
+    const isGranted = readAnalyticsConsent() === "granted"
+
+    setIsAllowed(isGranted)
+
+    if (!isGranted) {
+      clearAnalyticsStorage()
+    }
 
     const onChange = (event: Event) => {
       const value = (event as CustomEvent<string>).detail
@@ -25,6 +32,8 @@ export function YandexMetrika() {
         setIsAllowed(true)
         return
       }
+
+      clearAnalyticsStorage()
 
       // Отзыв согласия: выгрузить уже работающий счётчик из страницы нельзя,
       // поэтому перезагружаем — после перезагрузки он просто не смонтируется.

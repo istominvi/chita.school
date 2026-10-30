@@ -3,8 +3,13 @@ import { CONSENT_VERSION } from "@/lib/consent"
 // Заявки уходят напрямую в AlfaCRM: серверы в РФ (Selectel, ЦОД «Дубровка-3»),
 // это требование ч. 5 ст. 18 152-ФЗ. Токен — md5 от номера филиала, он виден
 // в адресе и не является секретом, поэтому при static export держим его тут же.
+//
+// Филиал 1 — тот, что AlfaCRM показывает в своей инструкции по интеграции лидов.
+// Проверено отправкой: лид из api/1 виден в списке, лид из api/7 не виден нигде.
+// Эндпоинт отвечает {"result":true} и для чужого филиала, так что по ответу
+// правильность адреса не проверить — только глазами в интерфейсе AlfaCRM.
 const ALFACRM_LEAD_URL =
-  "https://helendoronchita.s20.online/api/7/lead/create?token=8f14e45fceea167a5a36dedd4bea2543"
+  "https://helendoronchita.s20.online/api/1/lead/create?token=c4ca4238a0b923820dcc509a6f75849b"
 
 // Короткие коды источников — так лиды группируются в AlfaCRM.
 export const APPLICATION_SOURCES = {
